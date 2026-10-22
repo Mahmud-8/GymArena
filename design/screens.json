@@ -1,0 +1,1585 @@
+[
+  {
+    "id": "S01",
+    "n": 1,
+    "role": "kiosk",
+    "title": "Your next challenge starts here.",
+    "subtitle": "A personal workout or a friendly face-off. Choose how you want to begin.",
+    "blocks": [
+      {
+        "type": "cards",
+        "items": [
+          {
+            "title": "First visit?",
+            "body": "Create your profile, confirm your weight and meet your trainer for a starting assessment.",
+            "bg": "softGreen",
+            "actions": [
+              [
+                "Create my profile",
+                "S02"
+              ]
+            ]
+          },
+          {
+            "title": "Welcome back",
+            "body": "Confirm your profile with the camera or enter your member code. Your next approved challenge will be ready.",
+            "actions": [
+              [
+                "Find my profile",
+                "S05",
+                "secondary"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "type": "cards",
+        "items": [
+          {
+            "title": "Squats",
+            "body": "Clear targets. Counted repetitions. Feedback while you move.",
+            "status": "Supported exercise"
+          },
+          {
+            "title": "Jumping jacks",
+            "body": "Play solo or compete with another member using one shared camera.",
+            "status": "Solo + local 1v1"
+          }
+        ]
+      },
+      {
+        "type": "notice",
+        "title": "You are in control",
+        "body": "Face enrollment is optional. You can always use your member code instead.",
+        "tone": "Neutral"
+      }
+    ],
+    "actions": [
+      [
+        "Explore leaderboard",
+        "S16",
+        "secondary"
+      ]
+    ]
+  },
+  {
+    "id": "S02",
+    "n": 2,
+    "role": "kiosk",
+    "title": "Let’s set up your profile",
+    "subtitle": "Step 1 of 4 · Profile → Weight → Face choice → Trainer assessment",
+    "blocks": [
+      {
+        "type": "fields",
+        "items": [
+          [
+            "Full name",
+            "Omar Hassan"
+          ],
+          [
+            "Age",
+            "22"
+          ]
+        ]
+      },
+      {
+        "type": "notice",
+        "title": "One profile for every visit",
+        "body": "We will create a unique member code after you save. Use it whenever you prefer not to use face recognition."
+      },
+      {
+        "type": "text",
+        "text": "Your starting exercise level will be set by a trainer after an assessment. Age and weight do not measure muscular strength."
+      }
+    ],
+    "actions": [
+      [
+        "Save and continue",
+        "S03"
+      ],
+      [
+        "Back",
+        "S01",
+        "secondary"
+      ]
+    ]
+  },
+  {
+    "id": "S03",
+    "n": 3,
+    "role": "kiosk",
+    "title": "Confirm your weight",
+    "subtitle": "Step 2 of 4 · Omar Hassan · Member code GA-0107",
+    "blocks": [
+      {
+        "type": "metrics",
+        "items": [
+          [
+            "Connected scale",
+            "75.2 kg",
+            "Stable reading"
+          ],
+          [
+            "Last saved weight",
+            "76.0 kg",
+            "Previous visit"
+          ]
+        ]
+      },
+      {
+        "type": "notice",
+        "title": "Ready to save",
+        "body": "Check the displayed value. The reading is saved to your profile only after you confirm it."
+      },
+      {
+        "type": "cards",
+        "items": [
+          {
+            "title": "How to measure",
+            "body": "Step onto the connected scale and stand still until the reading is stable."
+          },
+          {
+            "title": "Reading unavailable?",
+            "body": "Your last accepted measurement stays unchanged.",
+            "actions": [
+              [
+                "View connection issue",
+                "S25",
+                "secondary"
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "actions": [
+      [
+        "Confirm 75.2 kg",
+        "S04"
+      ],
+      [
+        "Read again",
+        "S03",
+        "secondary"
+      ]
+    ]
+  },
+  {
+    "id": "S04",
+    "n": 4,
+    "role": "kiosk",
+    "title": "Choose how you return",
+    "subtitle": "Step 3 of 4 · Face enrollment is optional. Your member code always works.",
+    "blocks": [
+      {
+        "type": "camera",
+        "people": 1,
+        "aside": {
+          "title": "Face enrollment",
+          "body": "Save a face reference to suggest your profile on a later visit. Every match needs your confirmation.",
+          "items": [
+            [
+              "Your choice",
+              "I agree to face enrollment"
+            ],
+            [
+              "Alternative",
+              "Use GA-0107 instead"
+            ]
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "text": "You can remove your face reference later in Profile & privacy. The camera is used for identity here, not strength measurement."
+      }
+    ],
+    "actions": [
+      [
+        "Agree and enroll",
+        "S07"
+      ],
+      [
+        "Continue with member code",
+        "S07",
+        "secondary"
+      ]
+    ]
+  },
+  {
+    "id": "S05",
+    "n": 5,
+    "role": "kiosk",
+    "title": "Is this your profile?",
+    "subtitle": "A camera match is a suggestion. Confirm your identity before accessing a challenge.",
+    "blocks": [
+      {
+        "type": "cards",
+        "items": [
+          {
+            "title": "Omar Hassan",
+            "body": "Member code GA-0107 · Face match passed the configured quality checks.",
+            "status": "Needs confirmation",
+            "tone": "Warning",
+            "actions": [
+              [
+                "Yes, this is me",
+                "S06"
+              ],
+              [
+                "Not me",
+                "S05",
+                "secondary"
+              ]
+            ]
+          },
+          {
+            "title": "Use your member code",
+            "body": "Choose this if recognition is unavailable, uncertain or declined.",
+            "actions": [
+              [
+                "Find by member code",
+                "S06",
+                "secondary"
+              ],
+              [
+                "Ask staff for help",
+                "S24",
+                "secondary"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "type": "fields",
+        "items": [
+          [
+            "Member code",
+            "GA-0107"
+          ],
+          [
+            "Access method",
+            "Member code fallback"
+          ]
+        ]
+      }
+    ],
+    "actions": [
+      [
+        "Back to welcome",
+        "S01",
+        "secondary"
+      ]
+    ]
+  },
+  {
+    "id": "S06",
+    "n": 6,
+    "role": "member",
+    "active": "My home",
+    "title": "A challenge picked for you",
+    "subtitle": "Your next target uses your trainer-approved exercise level and approved result history.",
+    "blocks": [
+      {
+        "type": "metrics",
+        "items": [
+          [
+            "Your points",
+            "190",
+            "Approved results only"
+          ],
+          [
+            "Exercise level",
+            "Level 2",
+            "Trainer approved"
+          ],
+          [
+            "Latest weight",
+            "75.2 kg",
+            "Confirmed measurement"
+          ]
+        ]
+      },
+      {
+        "type": "cards",
+        "items": [
+          {
+            "title": "Squat challenge",
+            "body": "20 accepted repetitions · 60 seconds of active time. Sample rule version SQ-L2-v1.",
+            "status": "Ready to start",
+            "actions": [
+              [
+                "Set up my session",
+                "S09"
+              ]
+            ]
+          },
+          {
+            "title": "Keep track of your progress",
+            "body": "Review approved attempts, weight history and points. Incomplete attempts never reduce your score.",
+            "actions": [
+              [
+                "View my progress",
+                "S15",
+                "secondary"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "type": "notice",
+        "title": "Before you begin",
+        "body": "Completion reward +10 points · Valid timeout below target −5 points. Interrupted and discomfort-stopped sessions change no points."
+      }
+    ],
+    "actions": [
+      [
+        "Edit profile & privacy",
+        "S26",
+        "secondary"
+      ]
+    ]
+  },
+  {
+    "id": "S07",
+    "n": 7,
+    "role": "trainer",
+    "active": "Assessments",
+    "title": "Starting assessment",
+    "subtitle": "Record observed performance, then approve a suitable starting level.",
+    "blocks": [
+      {
+        "type": "fields",
+        "items": [
+          [
+            "Member",
+            "Omar Hassan · GA-0107"
+          ],
+          [
+            "Supported exercise",
+            "Squats"
+          ],
+          [
+            "Observed repetitions",
+            "24"
+          ],
+          [
+            "Active assessment time",
+            "60 seconds"
+          ],
+          [
+            "Proposed starting level",
+            "Level 2"
+          ],
+          [
+            "Approving trainer",
+            "Mahmoud Emad"
+          ]
+        ]
+      },
+      {
+        "type": "notice",
+        "title": "Trainer approval required",
+        "body": "Use the observed baseline to approve the level. Age, weight and a still photograph do not establish strength."
+      },
+      {
+        "type": "text",
+        "text": "Approval records the trainer and timestamp. Use Reassess to record a new baseline before replacing a previous approved level."
+      }
+    ],
+    "actions": [
+      [
+        "Approve starting level",
+        "S08"
+      ],
+      [
+        "Record reassessment",
+        "S07",
+        "secondary"
+      ]
+    ]
+  },
+  {
+    "id": "S08",
+    "n": 8,
+    "role": "trainer",
+    "active": "Challenge rules",
+    "title": "Approved challenge rules",
+    "subtitle": "Version each rule set before it can be used in a ranked session. Values below are prototype examples.",
+    "blocks": [
+      {
+        "type": "fields",
+        "items": [
+          [
+            "Exercise and level",
+            "Squats · Level 2"
+          ],
+          [
+            "Rule version",
+            "SQ-L2-v1"
+          ],
+          [
+            "Target",
+            "20 repetitions"
+          ],
+          [
+            "Common active time allowance",
+            "60 seconds"
+          ],
+          [
+            "Completion reward",
+            "+10 points"
+          ],
+          [
+            "Valid timeout deduction",
+            "−5 points"
+          ]
+        ]
+      },
+      {
+        "type": "notice",
+        "title": "Winner and tie rule",
+        "body": "If both finish, earlier active completion wins. Otherwise compare target completion at timeout. Equal results are a tie. Incomplete sessions have no winner."
+      },
+      {
+        "type": "text",
+        "text": "Target adaptation stays inside trainer-approved levels and uses approved history. Ranked 1v1 requires compatible levels and a common active time allowance."
+      }
+    ],
+    "actions": [
+      [
+        "Approve rule version",
+        "S09"
+      ],
+      [
+        "Save a new version",
+        "S08",
+        "secondary"
+      ]
+    ]
+  },
+  {
+    "id": "S09",
+    "n": 9,
+    "role": "member",
+    "active": "My home",
+    "title": "Set up your session",
+    "subtitle": "Review the participants, targets and scoring before the camera starts.",
+    "blocks": [
+      {
+        "type": "fields",
+        "items": [
+          [
+            "Session mode",
+            "Local 1v1"
+          ],
+          [
+            "Attempt type",
+            "Ranked"
+          ],
+          [
+            "Position A",
+            "Omar Hassan · Level 2"
+          ],
+          [
+            "Position B",
+            "Salma Ali · Level 2"
+          ]
+        ]
+      },
+      {
+        "type": "metrics",
+        "items": [
+          [
+            "Assigned targets",
+            "20 / 20",
+            "Squats · SQ-L2-v1"
+          ],
+          [
+            "Shared active timer",
+            "60 sec",
+            "Paused time excluded"
+          ],
+          [
+            "Points per member",
+            "+10 / −5",
+            "Completion / valid timeout"
+          ]
+        ]
+      },
+      {
+        "type": "notice",
+        "title": "Practice is also available",
+        "body": "Practice attempts do not affect leaderboard ranking. The rule version and participant assignments are fixed when this session is created."
+      }
+    ],
+    "actions": [
+      [
+        "Check camera positions",
+        "S10"
+      ],
+      [
+        "Try solo mode",
+        "S11",
+        "secondary"
+      ]
+    ]
+  },
+  {
+    "id": "S10",
+    "n": 10,
+    "role": "live",
+    "title": "Take your positions",
+    "subtitle": "Both participants must be visible and correctly assigned before the session can start.",
+    "blocks": [
+      {
+        "type": "camera",
+        "people": 2,
+        "aside": {
+          "title": "Participant check",
+          "body": "Confirm the person standing in each camera position.",
+          "items": [
+            [
+              "Position A",
+              "Omar Hassan · Confirmed"
+            ],
+            [
+              "Position B",
+              "Salma Ali · Confirmed"
+            ],
+            [
+              "Tracking",
+              "Both positions reliable"
+            ]
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "text": "One camera · Squats · 20 reps each · 60 seconds of shared active time"
+      }
+    ],
+    "actions": [
+      [
+        "Both ready — start 1v1",
+        "S12"
+      ],
+      [
+        "Start solo session",
+        "S11",
+        "secondary"
+      ]
+    ]
+  },
+  {
+    "id": "S11",
+    "n": 11,
+    "role": "live",
+    "title": "Keep your rhythm, Omar",
+    "subtitle": "Solo · Squats · Level 2 · Ranked attempt",
+    "blocks": [
+      {
+        "type": "camera",
+        "people": 1,
+        "aside": {
+          "title": "Your challenge",
+          "body": "Keep your full body inside the marked area.",
+          "value": "12 / 20",
+          "items": [
+            [
+              "Active time remaining",
+              "00:34"
+            ],
+            [
+              "Movement cue",
+              "Complete the full cycle"
+            ]
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "text": "Only accepted repetitions count. If tracking becomes unreliable, counting and active time pause together."
+      }
+    ],
+    "actions": [
+      [
+        "Pause & check positions",
+        "S13",
+        "secondary"
+      ],
+      [
+        "Stop — discomfort",
+        "S17",
+        "danger"
+      ]
+    ]
+  },
+  {
+    "id": "S12",
+    "n": 12,
+    "role": "live",
+    "title": "One camera. A fair challenge.",
+    "subtitle": "Local 1v1 · Squats · Same approved level · Shared active timer",
+    "blocks": [
+      {
+        "type": "camera",
+        "people": 2,
+        "aside": {
+          "title": "Live standings",
+          "body": "00:34 active time remaining",
+          "items": [
+            [
+              "Omar · Position A",
+              "12 / 20 reps"
+            ],
+            [
+              "Salma · Position B",
+              "10 / 20 reps"
+            ],
+            [
+              "Tracking",
+              "Reliable for both"
+            ]
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "text": "A member who reaches the target keeps that completion while the other continues. The session ends when both finish or active time expires."
+      }
+    ],
+    "actions": [
+      [
+        "Pause & check positions",
+        "S13",
+        "secondary"
+      ],
+      [
+        "Stop — discomfort",
+        "S17",
+        "danger"
+      ]
+    ]
+  },
+  {
+    "id": "S13",
+    "n": 13,
+    "role": "live",
+    "title": "Paused for both participants",
+    "subtitle": "Position B is no longer tracked reliably. Counters and the common active timer are frozen.",
+    "blocks": [
+      {
+        "type": "camera",
+        "people": 2,
+        "paused": true,
+        "aside": {
+          "title": "Restore the session",
+          "body": "Move back into view, then confirm both identities and positions.",
+          "items": [
+            [
+              "Retained accepted reps",
+              "Omar 12 · Salma 10"
+            ],
+            [
+              "Frozen active timer",
+              "00:34 remaining"
+            ],
+            [
+              "Partial movements",
+              "Discarded on pause"
+            ]
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "text": "No points are deducted for camera faults or a discomfort stop. If tracking or identity cannot be restored, close this attempt as incomplete."
+      }
+    ],
+    "actions": [
+      [
+        "Confirm positions & resume",
+        "S12"
+      ],
+      [
+        "Cannot restore — close",
+        "S17",
+        "secondary"
+      ],
+      [
+        "Stop — discomfort",
+        "S17",
+        "danger"
+      ]
+    ]
+  },
+  {
+    "id": "S14",
+    "n": 14,
+    "role": "member",
+    "active": "My progress",
+    "title": "Session result",
+    "subtitle": "Finalized valid outcome · SQ-L2-v1 · Approved for scoring once",
+    "blocks": [
+      {
+        "type": "metrics",
+        "items": [
+          [
+            "Winner",
+            "Omar",
+            "Target completed"
+          ],
+          [
+            "Session status",
+            "Valid",
+            "Shared active timer expired"
+          ],
+          [
+            "Score application",
+            "Applied once",
+            "Session GA-S014"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "headers": [
+          "Participant",
+          "Accepted reps",
+          "Outcome",
+          "Points change"
+        ],
+        "rows": [
+          [
+            "Omar Hassan",
+            "20 / 20",
+            "Completed in 47 sec",
+            "+10"
+          ],
+          [
+            "Salma Ali",
+            "16 / 20",
+            "Valid timeout",
+            "−5"
+          ]
+        ]
+      },
+      {
+        "type": "notice",
+        "title": "Added to approved history",
+        "body": "The rule snapshot determines the winner and points. Reopening this result does not apply the score a second time."
+      }
+    ],
+    "actions": [
+      [
+        "View my progress",
+        "S15"
+      ],
+      [
+        "New challenge",
+        "S09",
+        "secondary"
+      ]
+    ]
+  },
+  {
+    "id": "S15",
+    "n": 15,
+    "role": "member",
+    "active": "My progress",
+    "title": "Your progress",
+    "subtitle": "Approved challenge results, points and confirmed weight measurements.",
+    "blocks": [
+      {
+        "type": "metrics",
+        "items": [
+          [
+            "Points balance",
+            "190",
+            "Latest approved outcome applied"
+          ],
+          [
+            "Approved sessions",
+            "14",
+            "Incomplete attempts excluded"
+          ],
+          [
+            "Latest weight",
+            "75.2 kg",
+            "Confirmed 22 Oct 2026"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "headers": [
+          "Recent attempt",
+          "Result",
+          "Active time",
+          "Points"
+        ],
+        "rows": [
+          [
+            "Squats · Level 2",
+            "Completed 20 / 20",
+            "47 sec",
+            "+10"
+          ],
+          [
+            "Jumping jacks · Practice",
+            "Completed",
+            "54 sec",
+            "Not ranked"
+          ],
+          [
+            "Squats · Camera interrupted",
+            "Incomplete",
+            "26 sec",
+            "0"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "headers": [
+          "Weight record",
+          "Value",
+          "Source"
+        ],
+        "rows": [
+          [
+            "22 Oct 2026",
+            "75.2 kg",
+            "Confirmed scale reading"
+          ],
+          [
+            "15 Oct 2026",
+            "76.0 kg",
+            "Confirmed scale reading"
+          ]
+        ]
+      }
+    ],
+    "actions": [
+      [
+        "View leaderboard",
+        "S16",
+        "secondary"
+      ]
+    ]
+  },
+  {
+    "id": "S16",
+    "n": 16,
+    "role": "member",
+    "active": "Leaderboard",
+    "title": "A level playing field",
+    "subtitle": "Compare approved ranked results within the same exercise and challenge level.",
+    "blocks": [
+      {
+        "type": "fields",
+        "items": [
+          [
+            "Exercise",
+            "Squats"
+          ],
+          [
+            "Comparable level",
+            "Level 2"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "headers": [
+          "Member",
+          "Rank",
+          "Ranked points",
+          "Approved attempts"
+        ],
+        "rows": [
+          [
+            "Nour Khaled",
+            "1",
+            "240",
+            "18"
+          ],
+          [
+            "Omar Hassan · You",
+            "2",
+            "190",
+            "14"
+          ],
+          [
+            "Salma Ali",
+            "3",
+            "175",
+            "13"
+          ],
+          [
+            "Youssef Adel",
+            "4",
+            "150",
+            "11"
+          ]
+        ]
+      },
+      {
+        "type": "notice",
+        "title": "Ranking rules",
+        "body": "Practice and incomplete attempts are excluded. Raw repetition counts from different challenge levels are not compared directly."
+      }
+    ],
+    "actions": [
+      [
+        "My next challenge",
+        "S06"
+      ],
+      [
+        "Open staff overview",
+        "S24",
+        "secondary"
+      ]
+    ]
+  },
+  {
+    "id": "S17",
+    "n": 17,
+    "role": "member",
+    "active": "My progress",
+    "title": "This attempt is incomplete",
+    "subtitle": "Tracking could not be restored. The attempt is closed without an automatic winner.",
+    "blocks": [
+      {
+        "type": "metrics",
+        "items": [
+          [
+            "Winner",
+            "None",
+            "Outcome is incomplete"
+          ],
+          [
+            "Points change",
+            "0 / 0",
+            "No fault-related penalty"
+          ],
+          [
+            "Accepted reps retained",
+            "12 / 10",
+            "Not an approved result"
+          ]
+        ]
+      },
+      {
+        "type": "notice",
+        "title": "Your score stays unchanged",
+        "body": "A camera fault, uncertain identity or discomfort stop does not reduce points. This attempt does not feed challenge adaptation, ranked standings or an approved workout summary.",
+        "tone": "Warning"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "Session record",
+          "Value"
+        ],
+        "rows": [
+          [
+            "Reason",
+            "Position B tracking lost; recovery unresolved"
+          ],
+          [
+            "Participants",
+            "Omar Hassan / Salma Ali"
+          ],
+          [
+            "Active elapsed time",
+            "26 seconds; paused intervals excluded"
+          ]
+        ]
+      }
+    ],
+    "actions": [
+      [
+        "Set up a fresh attempt",
+        "S09"
+      ],
+      [
+        "Return to my home",
+        "S06",
+        "secondary"
+      ]
+    ]
+  },
+  {
+    "id": "S18",
+    "n": 18,
+    "role": "staff",
+    "active": "Overview",
+    "title": "Today at GymArena",
+    "subtitle": "Membership follow-up and approved fitness activity in one place.",
+    "blocks": [
+      {
+        "type": "metrics",
+        "items": [
+          [
+            "Active memberships",
+            "126",
+            "Current subscription dates"
+          ],
+          [
+            "Expiring this week",
+            "7",
+            "Review renewal follow-up"
+          ],
+          [
+            "Due reminders",
+            "16",
+            "Design sample queue"
+          ],
+          [
+            "Approved sessions",
+            "24",
+            "Camera challenges today"
+          ]
+        ]
+      },
+      {
+        "type": "cards",
+        "items": [
+          {
+            "title": "Renewal follow-up",
+            "body": "See which subscriptions expire soon and record confirmed renewals.",
+            "actions": [
+              [
+                "Review memberships",
+                "S19"
+              ]
+            ]
+          },
+          {
+            "title": "Trainer workspace",
+            "body": "Approve performance levels and version the rules before ranked attempts.",
+            "actions": [
+              [
+                "Open assessments",
+                "S07",
+                "secondary"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "type": "table",
+        "headers": [
+          "Follow-up reason",
+          "Members",
+          "Next action"
+        ],
+        "rows": [
+          [
+            "Subscription expiring soon",
+            "7",
+            "Review scheduled reminders"
+          ],
+          [
+            "Approved challenge summary",
+            "12",
+            "Review approved activity"
+          ],
+          [
+            "No recorded camera session",
+            "4",
+            "Optional challenge invitation"
+          ]
+        ]
+      }
+    ],
+    "actions": [
+      [
+        "Review messages",
+        "S22",
+        "secondary"
+      ]
+    ]
+  },
+  {
+    "id": "S19",
+    "n": 19,
+    "role": "staff",
+    "active": "Members",
+    "title": "Memberships",
+    "subtitle": "Monitor expiry dates, maintain subscription details and record confirmed renewals.",
+    "blocks": [
+      {
+        "type": "fields",
+        "items": [
+          [
+            "Search member",
+            "Name or member code"
+          ],
+          [
+            "Expiry date range",
+            "20 Oct – 30 Oct 2026"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "headers": [
+          "Member",
+          "Expiry date",
+          "Status",
+          "Last renewal"
+        ],
+        "rows": [
+          [
+            "Omar Hassan · GA-0107",
+            "30 Oct 2026",
+            "Active",
+            "30 Sep 2026"
+          ],
+          [
+            "Salma Ali · GA-0108",
+            "25 Oct 2026",
+            "Expiring soon",
+            "25 Sep 2026"
+          ],
+          [
+            "Youssef Adel · GA-0109",
+            "20 Oct 2026",
+            "Expired",
+            "20 Sep 2026"
+          ]
+        ]
+      },
+      {
+        "type": "notice",
+        "title": "Renewal-aware reminders",
+        "body": "Recording a renewal retains the previous and revised expiry dates and cancels pending reminders linked to the old date."
+      }
+    ],
+    "actions": [
+      [
+        "Record Salma’s renewal",
+        "S20"
+      ],
+      [
+        "Review reminder settings",
+        "S21",
+        "secondary"
+      ]
+    ]
+  },
+  {
+    "id": "S20",
+    "n": 20,
+    "role": "staff",
+    "active": "Members",
+    "title": "Record a subscription renewal",
+    "subtitle": "Salma Ali · GA-0108 · Authorized staff action",
+    "blocks": [
+      {
+        "type": "fields",
+        "items": [
+          [
+            "Subscription start date",
+            "25 Sep 2026"
+          ],
+          [
+            "Previous expiry date",
+            "25 Oct 2026"
+          ],
+          [
+            "Revised expiry date",
+            "25 Nov 2026"
+          ],
+          [
+            "Designated WhatsApp contact",
+            "Verified test recipient 02"
+          ]
+        ]
+      },
+      {
+        "type": "notice",
+        "title": "What happens when you save",
+        "body": "Keep a renewal record, update the current subscription status and notify scheduling to cancel pending reminders for 25 Oct 2026."
+      },
+      {
+        "type": "table",
+        "headers": [
+          "Renewal history",
+          "Previous expiry",
+          "Revised expiry"
+        ],
+        "rows": [
+          [
+            "25 Sep 2026 · Staff confirmed",
+            "25 Sep 2026",
+            "25 Oct 2026"
+          ]
+        ]
+      }
+    ],
+    "actions": [
+      [
+        "Save confirmed renewal",
+        "S19"
+      ],
+      [
+        "Cancel",
+        "S19",
+        "secondary"
+      ]
+    ]
+  },
+  {
+    "id": "S21",
+    "n": 21,
+    "role": "staff",
+    "active": "Reminders",
+    "title": "Renewal reminder settings",
+    "subtitle": "Schedule WhatsApp reminders from the current subscription expiry date.",
+    "blocks": [
+      {
+        "type": "fields",
+        "items": [
+          [
+            "Before-expiry offsets",
+            "7 days, 1 day"
+          ],
+          [
+            "On expiry date",
+            "Enabled · 0 days"
+          ],
+          [
+            "Channel",
+            "WhatsApp · test recipients"
+          ],
+          [
+            "Template",
+            "Membership renewal reminder"
+          ]
+        ]
+      },
+      {
+        "type": "notice",
+        "title": "One reminder per timing rule",
+        "body": "The member, expiry date, offset and channel identify a unique reminder. The current expiry date is checked again before release."
+      },
+      {
+        "type": "table",
+        "headers": [
+          "Member",
+          "Current expiry",
+          "Reminder",
+          "Status"
+        ],
+        "rows": [
+          [
+            "Salma Ali",
+            "25 Oct 2026",
+            "24 Oct · 1 day before",
+            "Pending"
+          ],
+          [
+            "Youssef Adel",
+            "20 Oct 2026",
+            "20 Oct · On expiry",
+            "Delivered"
+          ]
+        ]
+      }
+    ],
+    "actions": [
+      [
+        "Save reminder rules",
+        "S22"
+      ],
+      [
+        "Compose member follow-up",
+        "S23",
+        "secondary"
+      ]
+    ]
+  },
+  {
+    "id": "S22",
+    "n": 22,
+    "role": "staff",
+    "active": "Message log",
+    "title": "Message activity",
+    "subtitle": "Provider acknowledgements determine the delivery state. A submission is not proof of delivery.",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "Member / purpose",
+          "Scheduled for",
+          "Status",
+          "Action"
+        ],
+        "rows": [
+          [
+            "Salma · Renewal reminder",
+            "24 Oct 2026",
+            "Pending",
+            "Review"
+          ],
+          [
+            "Omar · Approved workout summary",
+            "22 Oct 2026",
+            "Delivered",
+            "View history"
+          ],
+          [
+            "Youssef · Renewal reminder",
+            "22 Oct 2026",
+            "Failed",
+            "Retry eligible"
+          ],
+          [
+            "Salma · Old expiry reminder",
+            "25 Sep 2026",
+            "Cancelled after renewal",
+            "No resend"
+          ],
+          [
+            "Nour · Challenge invitation",
+            "22 Oct 2026",
+            "Accepted by provider",
+            "Await acknowledgement"
+          ]
+        ]
+      },
+      {
+        "type": "notice",
+        "title": "Retry only when safe",
+        "body": "A failed delivery may be retried only when it has not already been confirmed as sent. Keep the provider message ID and member-linked history."
+      }
+    ],
+    "actions": [
+      [
+        "Retry failed delivery",
+        "S22"
+      ],
+      [
+        "Create follow-up",
+        "S23",
+        "secondary"
+      ]
+    ]
+  },
+  {
+    "id": "S23",
+    "n": 23,
+    "role": "staff",
+    "active": "Message log",
+    "title": "Review member follow-up",
+    "subtitle": "Select the reason, check the approved source and preview the message before delivery.",
+    "blocks": [
+      {
+        "type": "fields",
+        "items": [
+          [
+            "Member",
+            "Omar Hassan · GA-0107"
+          ],
+          [
+            "Follow-up type",
+            "Approved challenge summary"
+          ],
+          [
+            "Source result",
+            "GA-S014 · Valid and approved"
+          ],
+          [
+            "Recipient",
+            "Designated test recipient 01"
+          ]
+        ]
+      },
+      {
+        "type": "cards",
+        "items": [
+          {
+            "title": "Message preview",
+            "body": "Hi Omar, your approved squat challenge is complete: 20 accepted repetitions and +10 points. Your next approved challenge is ready."
+          },
+          {
+            "title": "Why this message?",
+            "body": "An approved session summary is available. For a member without one, use a challenge invitation and label the reason ‘No recorded camera session’."
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "text": "No recorded camera session does not mean the member was absent from the gym. Renewal messages use current subscription status."
+      }
+    ],
+    "actions": [
+      [
+        "Queue follow-up",
+        "S22"
+      ],
+      [
+        "Return to message history",
+        "S22",
+        "secondary"
+      ]
+    ]
+  },
+  {
+    "id": "S24",
+    "n": 24,
+    "role": "kiosk",
+    "title": "Staff sign in",
+    "subtitle": "Access is limited to authorized reception staff, trainers and managers.",
+    "blocks": [
+      {
+        "type": "fields",
+        "items": [
+          [
+            "Account",
+            "Authorized staff account"
+          ],
+          [
+            "Password",
+            "••••••••••••"
+          ]
+        ]
+      },
+      {
+        "type": "notice",
+        "title": "Access follows your role",
+        "body": "Membership changes, reminder rules, trainer approvals, weight history and face references require the appropriate permissions.",
+        "tone": "Neutral"
+      }
+    ],
+    "actions": [
+      [
+        "Sign in to workspace",
+        "S18"
+      ],
+      [
+        "Back to kiosk",
+        "S01",
+        "secondary"
+      ]
+    ]
+  },
+  {
+    "id": "S25",
+    "n": 25,
+    "role": "kiosk",
+    "title": "The scale is unavailable",
+    "subtitle": "We could not obtain a stable, valid reading from the connected scale.",
+    "blocks": [
+      {
+        "type": "metrics",
+        "items": [
+          [
+            "Current reading",
+            "—",
+            "Connection or reading error"
+          ],
+          [
+            "Last accepted weight",
+            "76.0 kg",
+            "Unchanged"
+          ]
+        ]
+      },
+      {
+        "type": "notice",
+        "title": "Nothing has been overwritten",
+        "body": "Check the scale connection, step off the scale, then try again. Only a stable reading that you confirm can replace the last accepted measurement.",
+        "tone": "Warning"
+      }
+    ],
+    "actions": [
+      [
+        "Retry measurement",
+        "S03"
+      ],
+      [
+        "Ask staff for help",
+        "S24",
+        "secondary"
+      ]
+    ]
+  },
+  {
+    "id": "S26",
+    "n": 26,
+    "role": "member",
+    "active": "Profile & privacy",
+    "title": "Profile & privacy",
+    "subtitle": "Correct your details and choose whether to keep face recognition enabled.",
+    "blocks": [
+      {
+        "type": "fields",
+        "items": [
+          [
+            "Full name",
+            "Omar Hassan"
+          ],
+          [
+            "Age",
+            "22"
+          ],
+          [
+            "Member code",
+            "GA-0107 · Read only"
+          ],
+          [
+            "Face reference",
+            "Enrolled with agreement"
+          ]
+        ]
+      },
+      {
+        "type": "notice",
+        "title": "Your member code stays available",
+        "body": "Removing your face reference withdraws your face-recognition agreement and deletes the enrolled reference. You can continue with your member code."
+      },
+      {
+        "type": "cards",
+        "items": [
+          {
+            "title": "Profile details",
+            "body": "Keep your name and age accurate. Subscription changes are handled by authorized staff.",
+            "actions": [
+              [
+                "Save profile details",
+                "S06"
+              ]
+            ]
+          },
+          {
+            "title": "Face recognition",
+            "body": "Optional access method. Confirmation is required on every returning match.",
+            "actions": [
+              [
+                "Remove face reference",
+                "S05",
+                "danger"
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "actions": [
+      [
+        "Return to my home",
+        "S06",
+        "secondary"
+      ]
+    ]
+  }
+]

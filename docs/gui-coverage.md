@@ -2,7 +2,7 @@
 
 Design file: https://www.figma.com/design/BLI0uf9XDv3LMcz7EUFYSU
 
-The editable Figma screens cover kiosk onboarding, optional face enrollment, code fallback, supervised assessment, trainer-approved challenges, solo and local 1v1 attempts, interruption recovery, result status, progress, memberships and messaging.
+The 26-screen interface source covers kiosk onboarding, optional face enrollment, code fallback, supervised assessment, trainer-approved challenges, solo and local 1v1 attempts, interruption recovery, result status, progress, memberships and messaging.
 
 | Requirements | Main views |
 | --- | --- |
@@ -16,3 +16,5 @@ The editable Figma screens cover kiosk onboarding, optional face enrollment, cod
 | FR-15, FR-16 | Results, member progress, comparable leaderboard and staff overview |
 
 Screen values are illustrative prototype data. Point amounts, thresholds, level boundaries and winner rules must be approved before a ranked implementation uses them.
+
+The Figma file currently contains design foundations only. Native screen import is pending. The HTML preview and SVG files in design/ contain the prepared interface screens.

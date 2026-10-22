@@ -7,7 +7,9 @@ Alamein International University · CSE454 Advanced Software Engineering
 ## Project links
 
 - Repository: https://github.com/Mahmud-8/GymArena
-- Expected GUI in Figma: https://www.figma.com/design/BLI0uf9XDv3LMcz7EUFYSU
+- Figma design foundations: https://www.figma.com/design/BLI0uf9XDv3LMcz7EUFYSU
+- [26-screen interface source](design/index.html) and [SVG screen files](design/screens/). Download the HTML file and open it in a browser to review the interactive prototype.
+- Native Figma screen import is pending because the connected Starter account reached its native-editing tool allowance.
 - Jira board: **Pending — the board is being prepared.** Replace this line with the real board URL when available.
 
 ## Current status
@@ -74,7 +76,7 @@ Exact dependency versions will be pinned in lockfiles after a camera, model and 
 
 ## Branches and collaboration
 
-- `main`: protected proposal/release baseline. Changes go through a pull request with at least one approval and resolved conversations.
+- `main`: proposal/release baseline. A protection rule requiring one approved pull request and resolved conversations has been prepared; GitHub is waiting for owner re-authentication before it can be saved. Until that step is confirmed, do not treat `main` as protected.
 - `develop`: integration branch for reviewed service work.
 - `feature/<service-folder>`: one branch for each service, maintained by its owner in the table above.
 

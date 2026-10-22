@@ -1,11 +1,19 @@
 # Repository setup status
 
-The repository is public and owned by Mahmud-8. Service ownership comes from the four-member roster in the proposal.
+Completed:
 
-External items to finish:
+- Public monorepo owned by Mahmud-8.
+- README, planned stack, folder structure, CODEOWNERS and pull request guidance.
+- main and develop, plus one feature branch for each of the eight services.
+- 26-screen HTML interface preview and 26 SVG screen sources.
+- Figma file with typography, color and spacing tokens, status variants and navigation component.
 
-- Jira URL: the board is still being prepared by the team. Update the root README when its real URL is available.
-- Both TAs: their GitHub usernames have not yet been supplied. Invite the exact accounts when supplied.
-- Team invitations must be accepted by the recipients before their write access and CODEOWNERS review requests become active.
+Pending external steps:
 
-Do not describe an invitation as accepted until GitHub confirms acceptance. Branch protection is a repository setting and must be checked in GitHub; this text does not enforce it.
+- Main branch protection: the rule is prepared, but GitHub requires owner re-authentication before saving. Protection is not yet verified as active.
+- Team collaborator invitations: owner re-authentication is needed to finish the access setup. The exact intended accounts are AhmedEbrahem25, xchan404 and mohamed-hegazy1. No acceptance is claimed.
+- Both TA accounts: exact GitHub usernames have not been supplied.
+- Jira URL: the team is still preparing the board.
+- Native Figma screen import: the connected Starter account reached its native-editing tool allowance. The screen source is ready in design/.
+
+Do not describe an invitation as accepted or a protection rule as active until GitHub confirms it.

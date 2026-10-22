@@ -1,0 +1,88 @@
+{
+  "fileKey": "BLI0uf9XDv3LMcz7EUFYSU",
+  "foundations": {
+    "createdNodeIds": [
+      "4:56",
+      "4:61",
+      "4:57",
+      "4:62",
+      "4:58",
+      "4:63",
+      "4:59",
+      "4:64",
+      "4:60",
+      "4:65",
+      "4:66",
+      "4:67",
+      "4:68",
+      "4:69",
+      "4:70"
+    ],
+    "mutatedNodeIds": [
+      "0:1"
+    ],
+    "pageId": "0:1",
+    "collections": [
+      "VariableCollectionId:4:2",
+      "VariableCollectionId:4:3",
+      "VariableCollectionId:4:4"
+    ],
+    "variables": {
+      "color/canvas": "VariableID:4:20",
+      "color/surface": "VariableID:4:21",
+      "color/ink": "VariableID:4:22",
+      "color/muted": "VariableID:4:23",
+      "color/border": "VariableID:4:24",
+      "color/lime": "VariableID:4:25",
+      "color/forest": "VariableID:4:26",
+      "color/softGreen": "VariableID:4:27",
+      "color/softAmber": "VariableID:4:28",
+      "color/amber": "VariableID:4:29",
+      "color/softRed": "VariableID:4:30",
+      "color/red": "VariableID:4:31",
+      "color/dark": "VariableID:4:32",
+      "color/darkPanel": "VariableID:4:33",
+      "color/white": "VariableID:4:34",
+      "space/4": "VariableID:4:35",
+      "space/8": "VariableID:4:36",
+      "space/12": "VariableID:4:37",
+      "space/16": "VariableID:4:38",
+      "space/20": "VariableID:4:39",
+      "space/24": "VariableID:4:40",
+      "space/32": "VariableID:4:41",
+      "space/40": "VariableID:4:42",
+      "space/48": "VariableID:4:43",
+      "space/64": "VariableID:4:44",
+      "radius/8": "VariableID:4:45",
+      "radius/12": "VariableID:4:46",
+      "radius/16": "VariableID:4:47",
+      "radius/24": "VariableID:4:48"
+    },
+    "styles": {
+      "Display": "S:b11527888cfef9b820218b4275620b0b8116557d,",
+      "Heading": "S:c14cd5777a4d1b7a47e7c90ec20fac0277475c02,",
+      "Section": "S:a248c353143eaab18819294b26b8b8e5bb82e95e,",
+      "Body": "S:b7f43909039a4680889c47f19abded8cd1948bc7,",
+      "Label": "S:bd47939f35fed6c6b66e8dd875be0a69a721dabe,",
+      "Caption": "S:606d9af5ba2c7ae24e6dab2cfcb8f661da589c58,",
+      "Number": "S:8c30e654b63ca89107f46444665e787194afed70,"
+    },
+    "components": {
+      "button": "3:57",
+      "input": "3:144",
+      "badge": "4:60",
+      "nav": "4:65"
+    },
+    "props": {
+      "badgeLabel": "Label#4:0",
+      "navLabel": "Label#4:5"
+    },
+    "font": "Manrope",
+    "variableCount": 44
+  },
+  "screens": [],
+  "completed": [
+    "discovery",
+    "foundations"
+  ]
+}
