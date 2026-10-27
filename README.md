@@ -1,20 +1,26 @@
 # GymArena
 
-GymArena combines personalized camera-based fitness challenges with subscription expiry monitoring and WhatsApp reminders. The first prototype supports squats and jumping jacks, one participant or a local 1v1 session, one camera and a shared display.
+GymArena is being developed to combine personalized camera-based fitness challenges with subscription expiry monitoring and WhatsApp reminders. The planned workout prototype covers squats and jumping jacks, solo and local 1v1 sessions, one camera and a shared display. The current implementation is the eight-service Docker and database foundation described below.
 
 Alamein International University · CSE454 Advanced Software Engineering
 
 ## Project links
 
 - Repository: https://github.com/Mahmud-8/GymArena
+- [Foundation build and publication workflow](https://github.com/Mahmud-8/GymArena/actions/workflows/foundation.yml)
+- [Public GHCR packages and image names](docs/github-delivery.md)
 - Figma design foundations: https://www.figma.com/design/BLI0uf9XDv3LMcz7EUFYSU
 - [26-screen interface source](design/index.html) and [SVG screen files](design/screens/). Download the HTML file and open it in a browser to review the interactive prototype.
 - Native Figma screen import is pending because the connected Starter account reached its native-editing tool allowance.
-- Jira board: **Pending — the board is being prepared.** Replace this line with the real board URL when available.
+- Jira board: the live board link and sprint evidence will be verified in the project-management step.
 
 ## Current status
 
-This repository contains the proposal-stage structure, ownership rules and design documentation. Application implementation, hardware integration and performance validation are planned work. Screens and example values are design data, not measured results.
+The foundation provides eight separately runnable FastAPI services, PostgreSQL schemas with isolated service logins, multi-stage Dockerfiles and Docker Compose. Endpoints currently cover service metadata, liveness and database readiness. Application features, authentication, hardware integration and performance validation remain planned work. Screens and example values are design data, not measured results.
+
+From the repository root, run `docker compose up`. See [Docker setup and current verification](docs/docker-foundation.md).
+
+The [foundation CI and GHCR workflow](.github/workflows/foundation.yml) builds the eight services, runs operational smoke checks, and publishes the tested images after verification. See [CI execution and evidence](docs/ci-and-ghcr.md) for the branch triggers, image tags and retained results. Functional application features remain subsequent work.
 
 ## Team
 
@@ -38,7 +44,7 @@ This repository contains the proposal-stage structure, ownership rules and desig
 | challenge-service | Mohamed Hegazy | [@mohamed-hegazy1](https://github.com/mohamed-hegazy1) | FR-13, FR-14 |
 | scoring-service | Mohamed Hegazy | [@mohamed-hegazy1](https://github.com/mohamed-hegazy1) | FR-15, FR-16 |
 
-The eight services are logical modules in one monorepo. The initial backend will run them together behind one FastAPI application, with a separate notification worker and a local camera/scale adapter where needed. Separate deployment of all eight services is not required for the prototype.
+The monorepo now has eight separate service foundations, each with its own FastAPI process and Dockerfile, matching the PM1 design and per-service container requirement. Each service uses only its own database login. A notification worker, local device adapters and the web application remain later work. See [the deployment decision](docs/architecture-decisions/0001-eight-service-runtime.md).
 
 ## Planned technology stack
 
@@ -56,27 +62,27 @@ The eight services are logical modules in one monorepo. The initial backend will
 | Messaging | WhatsApp Business Platform Cloud API | Use designated test recipients and record available delivery acknowledgements. |
 | Development and checks | Docker Compose, pytest, Vitest and Playwright | Repeatable local setup and domain, UI and integration checks as code is implemented. |
 
-Exact dependency versions will be pinned in lockfiles after a camera, model and scale compatibility check. The pose model does not establish member identity: confirmed floor positions and interruption recovery remain application responsibilities.
+Foundation runtime versions and wheel hashes are pinned in `infra/requirements.lock`. Vision and device dependencies will be pinned after the camera, model and scale compatibility checks. The pose model does not establish member identity: confirmed floor positions and interruption recovery remain application responsibilities.
 
 ## Planned folder structure
 
 | Path | Purpose |
 | --- | --- |
 | `apps/web/` | React kiosk, session display and staff dashboard. |
-| `apps/api/` | FastAPI composition root, authentication and API routing. |
+| `apps/api/` | Reserved for an optional future gateway; services currently expose separate APIs. |
 | `apps/worker/` | Persistent reminders and message delivery jobs. |
 | `apps/device-agent/` | Local camera and electronic-scale adapters. |
 | `services/` | Eight owned service folders listed above. |
 | `packages/contracts/` | Shared API schemas and domain event definitions. |
 | `packages/ui/` | Shared interface components and design tokens. |
 | `docs/` | Architecture decisions, GUI traceability and setup status. |
-| `tests/` | Planned cross-service acceptance and integration checks. |
-| `infra/` | Planned local environment and deployment configuration. |
+| `tests/` | Implemented foundation smoke checks; functional acceptance tests remain planned. |
+| `infra/` | Docker bootstrap, dependency pins and service inventory. |
 | `.github/` | CODEOWNERS and pull request guidance. |
 
 ## Branches and collaboration
 
-- `main`: proposal/release baseline. A protection rule requiring one approved pull request and resolved conversations has been prepared; GitHub is waiting for owner re-authentication before it can be saved. Until that step is confirmed, do not treat `main` as protected.
+- `main`: release baseline. Use the foundation workflow result for the exact current commit. Branch protection is not configured; the documented review process remains a team practice.
 - `develop`: integration branch for reviewed service work.
 - `feature/<service-folder>`: one branch for each service, maintained by its owner in the table above.
 

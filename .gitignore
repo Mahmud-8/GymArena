@@ -10,6 +10,11 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+foundation-smoke.json
+foundation-recovery.json
+ci-images/
+ci-evidence/
+ci-publication/
 .DS_Store
 .idea/
 .vscode/
