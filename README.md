@@ -14,7 +14,11 @@ Alamein International University · CSE454 Advanced Software Engineering
 
 ## Current status
 
-This repository contains the proposal-stage structure, ownership rules and design documentation. Application implementation, hardware integration and performance validation are planned work. Screens and example values are design data, not measured results.
+This local foundation adds eight separately runnable FastAPI services, PostgreSQL schemas with isolated service logins, multi-stage Dockerfiles and Docker Compose. Endpoints currently cover service metadata, liveness and database readiness. Application features, authentication, hardware integration and performance validation remain planned work. Screens and example values are design data, not measured results.
+
+From the repository root, run `docker compose up`. See [Docker setup and current verification](docs/docker-foundation.md).
+
+The [foundation CI and GHCR workflow](.github/workflows/foundation.yml) builds the eight services, runs operational smoke checks, and publishes the tested images after verification. See [CI execution and evidence](docs/ci-and-ghcr.md) for the branch triggers, image tags and retained results. Functional application features remain subsequent work.
 
 ## Team
 
@@ -38,7 +42,7 @@ This repository contains the proposal-stage structure, ownership rules and desig
 | challenge-service | Mohamed Hegazy | [@mohamed-hegazy1](https://github.com/mohamed-hegazy1) | FR-13, FR-14 |
 | scoring-service | Mohamed Hegazy | [@mohamed-hegazy1](https://github.com/mohamed-hegazy1) | FR-15, FR-16 |
 
-The eight services are logical modules in one monorepo. The initial backend will run them together behind one FastAPI application, with a separate notification worker and a local camera/scale adapter where needed. Separate deployment of all eight services is not required for the prototype.
+The monorepo now has eight separate service foundations, each with its own FastAPI process and Dockerfile, matching the PM1 design and per-service container requirement. Each service uses only its own database login. A notification worker, local device adapters and the web application remain later work. See [the deployment decision](docs/architecture-decisions/0001-eight-service-runtime.md).
 
 ## Planned technology stack
 
@@ -63,7 +67,7 @@ Exact dependency versions will be pinned in lockfiles after a camera, model and 
 | Path | Purpose |
 | --- | --- |
 | `apps/web/` | React kiosk, session display and staff dashboard. |
-| `apps/api/` | FastAPI composition root, authentication and API routing. |
+| `apps/api/` | Reserved for an optional future gateway; services currently expose separate APIs. |
 | `apps/worker/` | Persistent reminders and message delivery jobs. |
 | `apps/device-agent/` | Local camera and electronic-scale adapters. |
 | `services/` | Eight owned service folders listed above. |
@@ -71,7 +75,7 @@ Exact dependency versions will be pinned in lockfiles after a camera, model and 
 | `packages/ui/` | Shared interface components and design tokens. |
 | `docs/` | Architecture decisions, GUI traceability and setup status. |
 | `tests/` | Planned cross-service acceptance and integration checks. |
-| `infra/` | Planned local environment and deployment configuration. |
+| `infra/` | Docker bootstrap, dependency pins and service inventory. |
 | `.github/` | CODEOWNERS and pull request guidance. |
 
 ## Branches and collaboration

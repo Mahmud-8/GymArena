@@ -1,0 +1,311 @@
+{
+  "scope": "Eight-service Docker foundation; business features remain unimplemented",
+  "verified_at_utc": "2026-10-27T16:12:43.296622+00:00",
+  "repository_base_commit": "25c7095cf67b53fb367ac3dfb8b03a9fab9fbca8",
+  "local_branch": "feature/docker-foundation",
+  "remote_changes_pushed": false,
+  "docker_server_version": "29.4.0",
+  "compose_version": "5.1.2",
+  "postgres_version": "postgres (PostgreSQL) 16.15 (Debian 16.15-1.pgdg12+2)",
+  "python_version": "Python 3.12.16",
+  "base_images": [
+    {
+      "tags": [
+        "python:3.12-slim-bookworm"
+      ],
+      "id": "sha256:6dd8b6dab6b3adc7812bab69eca5dbdc1a5cc690ad28306d234ffb4ef8ac9753",
+      "digests": [
+        "python@sha256:6dd8b6dab6b3adc7812bab69eca5dbdc1a5cc690ad28306d234ffb4ef8ac9753"
+      ]
+    },
+    {
+      "tags": [
+        "postgres:16-bookworm"
+      ],
+      "id": "sha256:d81f7b51697014367236d07ec58b54153fc28f828b72bf247fe5c7487520bcb0",
+      "digests": [
+        "postgres@sha256:d81f7b51697014367236d07ec58b54153fc28f828b72bf247fe5c7487520bcb0"
+      ]
+    }
+  ],
+  "installed_runtime_packages": [
+    "annotated-doc==0.0.5",
+    "annotated-types==0.8.0",
+    "anyio==4.15.1",
+    "click==8.5.0",
+    "fastapi==0.162.0",
+    "h11==0.16.0",
+    "idna==3.20",
+    "opentelemetry-api==1.45.1",
+    "psycopg==3.3.6",
+    "psycopg-binary==3.3.6",
+    "pydantic==2.14.1",
+    "pydantic_core==2.50.1",
+    "starlette==1.10.0",
+    "typing-inspection==0.4.4",
+    "typing_extensions==4.16.0",
+    "tzdata==2026.5",
+    "uvicorn==0.54.0"
+  ],
+  "configuration_validation_passed": true,
+  "compose_build_and_up_passed": true,
+  "application_containers_healthy": 8,
+  "postgres_container_healthy": true,
+  "credential_initializer_expected_status": "Exited with code 0",
+  "static_audit": {
+    "scope": "Static foundation structure; runtime checks recorded separately",
+    "services": [
+      {
+        "service": "exercise-tracking-service",
+        "multi_stage_dockerfile": true,
+        "own_credential_only": true,
+        "localhost_only": true,
+        "original_schema_text_preserved": true,
+        "tables": 3,
+        "views": 0,
+        "schema_sha256": "e2e3f911add0738659b89d8ae41af44e4a469e3d31e21875fd7b752cc10bbe4b"
+      },
+      {
+        "service": "membership-service",
+        "multi_stage_dockerfile": true,
+        "own_credential_only": true,
+        "localhost_only": true,
+        "original_schema_text_preserved": true,
+        "tables": 4,
+        "views": 0,
+        "schema_sha256": "87ade5d44ddb30677f604101a2b301f50729f8f437cbb5901f709ea6aab697ff"
+      },
+      {
+        "service": "session-service",
+        "multi_stage_dockerfile": true,
+        "own_credential_only": true,
+        "localhost_only": true,
+        "original_schema_text_preserved": true,
+        "tables": 5,
+        "views": 0,
+        "schema_sha256": "764b083e8b9b06877ff5598e54930048e2a59699548b2aa37aaa2c22536be040"
+      },
+      {
+        "service": "notification-service",
+        "multi_stage_dockerfile": true,
+        "own_credential_only": true,
+        "localhost_only": true,
+        "original_schema_text_preserved": true,
+        "tables": 7,
+        "views": 0,
+        "schema_sha256": "4216cc4182c969d4b7e80bbdd11838106f547fc616f3b93306579a7959b81f24"
+      },
+      {
+        "service": "member-service",
+        "multi_stage_dockerfile": true,
+        "own_credential_only": true,
+        "localhost_only": true,
+        "original_schema_text_preserved": true,
+        "tables": 4,
+        "views": 0,
+        "schema_sha256": "0213994df1f2f4f66ecb0e79edd4d851da32e598883e3ada82560ea877e2e5ed"
+      },
+      {
+        "service": "recognition-service",
+        "multi_stage_dockerfile": true,
+        "own_credential_only": true,
+        "localhost_only": true,
+        "original_schema_text_preserved": true,
+        "tables": 3,
+        "views": 0,
+        "schema_sha256": "811b688f123460f20014a622dbcf6d2b41c863bdd61a0962eaa639ce101484f8"
+      },
+      {
+        "service": "challenge-service",
+        "multi_stage_dockerfile": true,
+        "own_credential_only": true,
+        "localhost_only": true,
+        "original_schema_text_preserved": true,
+        "tables": 5,
+        "views": 0,
+        "schema_sha256": "0e04c6b0ef791e58834c4069e6131490b38542300918e06206f848a54690b489"
+      },
+      {
+        "service": "scoring-service",
+        "multi_stage_dockerfile": true,
+        "own_credential_only": true,
+        "localhost_only": true,
+        "original_schema_text_preserved": true,
+        "tables": 7,
+        "views": 2,
+        "schema_sha256": "1ddda8cda5c227217f6907887ce6f5b3f7b209310b78418c3d4cae220c5c4127"
+      }
+    ],
+    "service_count": 8,
+    "table_count": 38,
+    "view_count": 2
+  },
+  "runtime_smoke_checks": {
+    "scope": "Docker foundation only",
+    "checks": [
+      {
+        "check": "http_and_contract_boundary",
+        "service": "exercise-tracking-service",
+        "passed": true
+      },
+      {
+        "check": "database_and_process_isolation",
+        "service": "exercise-tracking-service",
+        "passed": true,
+        "denied": 7,
+        "non_root": true,
+        "read_only": true
+      },
+      {
+        "check": "http_and_contract_boundary",
+        "service": "membership-service",
+        "passed": true
+      },
+      {
+        "check": "database_and_process_isolation",
+        "service": "membership-service",
+        "passed": true,
+        "denied": 7,
+        "non_root": true,
+        "read_only": true
+      },
+      {
+        "check": "http_and_contract_boundary",
+        "service": "session-service",
+        "passed": true
+      },
+      {
+        "check": "database_and_process_isolation",
+        "service": "session-service",
+        "passed": true,
+        "denied": 7,
+        "non_root": true,
+        "read_only": true
+      },
+      {
+        "check": "http_and_contract_boundary",
+        "service": "notification-service",
+        "passed": true
+      },
+      {
+        "check": "database_and_process_isolation",
+        "service": "notification-service",
+        "passed": true,
+        "denied": 7,
+        "non_root": true,
+        "read_only": true
+      },
+      {
+        "check": "http_and_contract_boundary",
+        "service": "member-service",
+        "passed": true
+      },
+      {
+        "check": "database_and_process_isolation",
+        "service": "member-service",
+        "passed": true,
+        "denied": 7,
+        "non_root": true,
+        "read_only": true
+      },
+      {
+        "check": "http_and_contract_boundary",
+        "service": "recognition-service",
+        "passed": true
+      },
+      {
+        "check": "database_and_process_isolation",
+        "service": "recognition-service",
+        "passed": true,
+        "denied": 7,
+        "non_root": true,
+        "read_only": true
+      },
+      {
+        "check": "http_and_contract_boundary",
+        "service": "challenge-service",
+        "passed": true
+      },
+      {
+        "check": "database_and_process_isolation",
+        "service": "challenge-service",
+        "passed": true,
+        "denied": 7,
+        "non_root": true,
+        "read_only": true
+      },
+      {
+        "check": "http_and_contract_boundary",
+        "service": "scoring-service",
+        "passed": true
+      },
+      {
+        "check": "database_and_process_isolation",
+        "service": "scoring-service",
+        "passed": true,
+        "denied": 7,
+        "non_root": true,
+        "read_only": true
+      },
+      {
+        "check": "outage_reports_503_but_process_stays_live",
+        "service": "exercise-tracking-service",
+        "passed": true
+      },
+      {
+        "check": "outage_reports_503_but_process_stays_live",
+        "service": "membership-service",
+        "passed": true
+      },
+      {
+        "check": "outage_reports_503_but_process_stays_live",
+        "service": "session-service",
+        "passed": true
+      },
+      {
+        "check": "outage_reports_503_but_process_stays_live",
+        "service": "notification-service",
+        "passed": true
+      },
+      {
+        "check": "outage_reports_503_but_process_stays_live",
+        "service": "member-service",
+        "passed": true
+      },
+      {
+        "check": "outage_reports_503_but_process_stays_live",
+        "service": "recognition-service",
+        "passed": true
+      },
+      {
+        "check": "outage_reports_503_but_process_stays_live",
+        "service": "challenge-service",
+        "passed": true
+      },
+      {
+        "check": "outage_reports_503_but_process_stays_live",
+        "service": "scoring-service",
+        "passed": true
+      },
+      {
+        "check": "postgres_restart_retains_committed_data",
+        "passed": true
+      },
+      {
+        "check": "all_eight_services_recover",
+        "passed": true
+      }
+    ],
+    "cross_database_connections_denied": 56,
+    "functional_features_tested": false
+  },
+  "functional_features_tested": false,
+  "ghcr_published": false,
+  "hosted_ci_verified": false,
+  "limitations": [
+    "No functional service operations, authentication, frontend, camera/scale adapters or delivery worker.",
+    "No functional acceptance, PostgreSQL concurrency, performance, vision accuracy or provider-delivery tests.",
+    "Base-image family tags can receive upstream patch updates; the digests above identify this validation run."
+  ],
+  "record_kind": "Historical local Docker verification before the CI and GHCR step"
+}

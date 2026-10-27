@@ -1,0 +1,297 @@
+name: gymarena-foundation
+
+x-api: &api
+  restart: unless-stopped
+  init: true
+  read_only: true
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  tmpfs: ["/tmp:size=16m,mode=1777"]
+  stop_grace_period: 15s
+  mem_limit: 256m
+  cpus: 0.5
+  networks: [backend]
+  depends_on:
+    database:
+      condition: service_healthy
+
+services:
+  credentials:
+    image: ${GYMARENA_PYTHON_IMAGE:-python:3.12-slim-bookworm}
+    command: [python, /bootstrap/bootstrap_credentials.py]
+    read_only: true
+    network_mode: none
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    volumes:
+      - type: bind
+        source: ./infra/bootstrap_credentials.py
+        target: /bootstrap/bootstrap_credentials.py
+        read_only: true
+        bind: {create_host_path: false}
+      - admin-credentials:/credentials/admin
+      - tracking-credentials:/credentials/tracking
+      - membership-credentials:/credentials/membership
+      - session-credentials:/credentials/session
+      - notification-credentials:/credentials/notification
+      - member-credentials:/credentials/member
+      - recognition-credentials:/credentials/recognition
+      - challenge-credentials:/credentials/challenge
+      - scoring-credentials:/credentials/scoring
+
+  database:
+    image: ${GYMARENA_POSTGRES_IMAGE:-postgres:16-bookworm}
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: gymarena_admin
+      POSTGRES_DB: postgres
+      POSTGRES_PASSWORD_FILE: /credentials/admin/password
+      POSTGRES_INITDB_ARGS: --auth-host=scram-sha-256
+    depends_on:
+      credentials: {condition: service_completed_successfully}
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -h 127.0.0.1 -U gymarena_admin -d postgres"]
+      interval: 5s
+      timeout: 3s
+      start_period: 20s
+      retries: 12
+    networks: [backend]
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - type: bind
+        source: ./infra/postgres-init.sh
+        target: /docker-entrypoint-initdb.d/10-gymarena.sh
+        read_only: true
+        bind: {create_host_path: false}
+      - admin-credentials:/credentials/admin:ro
+      - tracking-credentials:/credentials/tracking:ro
+      - membership-credentials:/credentials/membership:ro
+      - session-credentials:/credentials/session:ro
+      - notification-credentials:/credentials/notification:ro
+      - member-credentials:/credentials/member:ro
+      - recognition-credentials:/credentials/recognition:ro
+      - challenge-credentials:/credentials/challenge:ro
+      - scoring-credentials:/credentials/scoring:ro
+      - type: bind
+        source: ./services/exercise-tracking-service/db/001_initial.sql
+        target: /schemas/tracking.sql
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ./services/membership-service/db/001_initial.sql
+        target: /schemas/membership.sql
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ./services/session-service/db/001_initial.sql
+        target: /schemas/session.sql
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ./services/notification-service/db/001_initial.sql
+        target: /schemas/notification.sql
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ./services/member-service/db/001_initial.sql
+        target: /schemas/member.sql
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ./services/recognition-service/db/001_initial.sql
+        target: /schemas/recognition.sql
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ./services/challenge-service/db/001_initial.sql
+        target: /schemas/challenge.sql
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ./services/scoring-service/db/001_initial.sql
+        target: /schemas/scoring.sql
+        read_only: true
+        bind: {create_host_path: false}
+
+  exercise-tracking-service:
+    <<: *api
+    build:
+      context: .
+      dockerfile: services/exercise-tracking-service/Dockerfile
+      args:
+        VCS_REF: ${GYMARENA_REVISION:-working-tree}
+        PYTHON_IMAGE: ${GYMARENA_PYTHON_IMAGE:-python:3.12-slim-bookworm}
+    image: gymarena/exercise-tracking-service:foundation
+    pull_policy: build
+    environment:
+      DB_HOST: database
+      DB_PORT: "5432"
+      DB_NAME: gymarena_tracking
+      DB_USER: gymarena_tracking
+      DB_PASSWORD_FILE: /credentials/password
+    volumes:
+      - tracking-credentials:/credentials:ro
+    ports:
+      - "${GYMARENA_BIND_ADDRESS:-127.0.0.1}:${TRACKING_PORT:-8101}:8000"
+
+  membership-service:
+    <<: *api
+    build:
+      context: .
+      dockerfile: services/membership-service/Dockerfile
+      args:
+        VCS_REF: ${GYMARENA_REVISION:-working-tree}
+        PYTHON_IMAGE: ${GYMARENA_PYTHON_IMAGE:-python:3.12-slim-bookworm}
+    image: gymarena/membership-service:foundation
+    pull_policy: build
+    environment:
+      DB_HOST: database
+      DB_PORT: "5432"
+      DB_NAME: gymarena_membership
+      DB_USER: gymarena_membership
+      DB_PASSWORD_FILE: /credentials/password
+    volumes:
+      - membership-credentials:/credentials:ro
+    ports:
+      - "${GYMARENA_BIND_ADDRESS:-127.0.0.1}:${MEMBERSHIP_PORT:-8102}:8000"
+
+  session-service:
+    <<: *api
+    build:
+      context: .
+      dockerfile: services/session-service/Dockerfile
+      args:
+        VCS_REF: ${GYMARENA_REVISION:-working-tree}
+        PYTHON_IMAGE: ${GYMARENA_PYTHON_IMAGE:-python:3.12-slim-bookworm}
+    image: gymarena/session-service:foundation
+    pull_policy: build
+    environment:
+      DB_HOST: database
+      DB_PORT: "5432"
+      DB_NAME: gymarena_session
+      DB_USER: gymarena_session
+      DB_PASSWORD_FILE: /credentials/password
+    volumes:
+      - session-credentials:/credentials:ro
+    ports:
+      - "${GYMARENA_BIND_ADDRESS:-127.0.0.1}:${SESSION_PORT:-8103}:8000"
+
+  notification-service:
+    <<: *api
+    build:
+      context: .
+      dockerfile: services/notification-service/Dockerfile
+      args:
+        VCS_REF: ${GYMARENA_REVISION:-working-tree}
+        PYTHON_IMAGE: ${GYMARENA_PYTHON_IMAGE:-python:3.12-slim-bookworm}
+    image: gymarena/notification-service:foundation
+    pull_policy: build
+    environment:
+      DB_HOST: database
+      DB_PORT: "5432"
+      DB_NAME: gymarena_notification
+      DB_USER: gymarena_notification
+      DB_PASSWORD_FILE: /credentials/password
+    volumes:
+      - notification-credentials:/credentials:ro
+    ports:
+      - "${GYMARENA_BIND_ADDRESS:-127.0.0.1}:${NOTIFICATION_PORT:-8104}:8000"
+
+  member-service:
+    <<: *api
+    build:
+      context: .
+      dockerfile: services/member-service/Dockerfile
+      args:
+        VCS_REF: ${GYMARENA_REVISION:-working-tree}
+        PYTHON_IMAGE: ${GYMARENA_PYTHON_IMAGE:-python:3.12-slim-bookworm}
+    image: gymarena/member-service:foundation
+    pull_policy: build
+    environment:
+      DB_HOST: database
+      DB_PORT: "5432"
+      DB_NAME: gymarena_member
+      DB_USER: gymarena_member
+      DB_PASSWORD_FILE: /credentials/password
+    volumes:
+      - member-credentials:/credentials:ro
+    ports:
+      - "${GYMARENA_BIND_ADDRESS:-127.0.0.1}:${MEMBER_PORT:-8105}:8000"
+
+  recognition-service:
+    <<: *api
+    build:
+      context: .
+      dockerfile: services/recognition-service/Dockerfile
+      args:
+        VCS_REF: ${GYMARENA_REVISION:-working-tree}
+        PYTHON_IMAGE: ${GYMARENA_PYTHON_IMAGE:-python:3.12-slim-bookworm}
+    image: gymarena/recognition-service:foundation
+    pull_policy: build
+    environment:
+      DB_HOST: database
+      DB_PORT: "5432"
+      DB_NAME: gymarena_recognition
+      DB_USER: gymarena_recognition
+      DB_PASSWORD_FILE: /credentials/password
+    volumes:
+      - recognition-credentials:/credentials:ro
+    ports:
+      - "${GYMARENA_BIND_ADDRESS:-127.0.0.1}:${RECOGNITION_PORT:-8106}:8000"
+
+  challenge-service:
+    <<: *api
+    build:
+      context: .
+      dockerfile: services/challenge-service/Dockerfile
+      args:
+        VCS_REF: ${GYMARENA_REVISION:-working-tree}
+        PYTHON_IMAGE: ${GYMARENA_PYTHON_IMAGE:-python:3.12-slim-bookworm}
+    image: gymarena/challenge-service:foundation
+    pull_policy: build
+    environment:
+      DB_HOST: database
+      DB_PORT: "5432"
+      DB_NAME: gymarena_challenge
+      DB_USER: gymarena_challenge
+      DB_PASSWORD_FILE: /credentials/password
+    volumes:
+      - challenge-credentials:/credentials:ro
+    ports:
+      - "${GYMARENA_BIND_ADDRESS:-127.0.0.1}:${CHALLENGE_PORT:-8107}:8000"
+
+  scoring-service:
+    <<: *api
+    build:
+      context: .
+      dockerfile: services/scoring-service/Dockerfile
+      args:
+        VCS_REF: ${GYMARENA_REVISION:-working-tree}
+        PYTHON_IMAGE: ${GYMARENA_PYTHON_IMAGE:-python:3.12-slim-bookworm}
+    image: gymarena/scoring-service:foundation
+    pull_policy: build
+    environment:
+      DB_HOST: database
+      DB_PORT: "5432"
+      DB_NAME: gymarena_scoring
+      DB_USER: gymarena_scoring
+      DB_PASSWORD_FILE: /credentials/password
+    volumes:
+      - scoring-credentials:/credentials:ro
+    ports:
+      - "${GYMARENA_BIND_ADDRESS:-127.0.0.1}:${SCORING_PORT:-8108}:8000"
+
+networks:
+  backend:
+
+volumes:
+  postgres-data:
+  admin-credentials:
+  tracking-credentials:
+  membership-credentials:
+  session-credentials:
+  notification-credentials:
+  member-credentials:
+  recognition-credentials:
+  challenge-credentials:
+  scoring-credentials:
