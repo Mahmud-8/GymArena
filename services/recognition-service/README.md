@@ -8,4 +8,14 @@ Own enrollment consent and face references. Suggest matches, obtain confirmation
 
 Assigned branch: `feature/recognition-service`
 
-This folder is reserved for the service implementation. Contracts and tests will be added with the related backlog stories.
+The Docker foundation now runs this service as its own FastAPI process. It exposes `/`, `/health/live`, `/health/ready` and `/openapi.json`. Readiness checks the owned PostgreSQL database, expected tables and views.
+
+The `IRecognition` business operations remain planned. No registration, scoring, tracking, messaging or hardware behavior is implied by a healthy foundation.
+
+- Entry point: `api/routes.py`
+- Build: `Dockerfile` with dependency and non-root runtime stages
+- Initial schema: `db/001_initial.sql`
+- Local URL: http://localhost:8106
+- Start all services from the repository root: `docker compose up`
+
+See [Docker setup](../../docs/docker-foundation.md) for checks and data ownership.

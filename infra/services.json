@@ -1,0 +1,197 @@
+[
+  {
+    "id": "tracking",
+    "folder": "exercise-tracking-service",
+    "name": "Exercise Tracking",
+    "owner": "Mahmoud Emad",
+    "interface": "IExerciseTracking",
+    "requirements": "FR-01, FR-02",
+    "port": 8101,
+    "database": "gymarena_tracking",
+    "db_user": "gymarena_tracking",
+    "tables": [
+      "exercise_configs",
+      "phase_rules",
+      "tracking_diagnostics"
+    ],
+    "views": [],
+    "dependencies": {},
+    "external_interfaces": [
+      "ICameraFeed"
+    ]
+  },
+  {
+    "id": "membership",
+    "folder": "membership-service",
+    "name": "Membership",
+    "owner": "Mahmoud Emad",
+    "interface": "IMembership",
+    "requirements": "FR-03, FR-04",
+    "port": 8102,
+    "database": "gymarena_membership",
+    "db_user": "gymarena_membership",
+    "tables": [
+      "memberships",
+      "renewal_records",
+      "renewal_outbox",
+      "renewal_feed_state"
+    ],
+    "views": [],
+    "dependencies": {
+      "IMemberProfile": "http://member-service:8000"
+    },
+    "external_interfaces": []
+  },
+  {
+    "id": "session",
+    "folder": "session-service",
+    "name": "Session Control",
+    "owner": "Ahmed Ebrahim",
+    "interface": "ISessionControl",
+    "requirements": "FR-05, FR-06",
+    "port": 8103,
+    "database": "gymarena_session",
+    "db_user": "gymarena_session",
+    "tables": [
+      "sessions",
+      "session_participants",
+      "participant_rule_snapshots",
+      "session_interruptions",
+      "session_outcomes"
+    ],
+    "views": [],
+    "dependencies": {
+      "IMemberProfile": "http://member-service:8000",
+      "IRecognition": "http://recognition-service:8000",
+      "IExerciseTracking": "http://exercise-tracking-service:8000",
+      "IChallenge": "http://challenge-service:8000"
+    },
+    "external_interfaces": []
+  },
+  {
+    "id": "notification",
+    "folder": "notification-service",
+    "name": "Notifications",
+    "owner": "Ahmed Ebrahim",
+    "interface": "INotifications",
+    "requirements": "FR-07, FR-08",
+    "port": 8104,
+    "database": "gymarena_notification",
+    "db_user": "gymarena_notification",
+    "tables": [
+      "reminder_settings",
+      "reminder_offsets",
+      "reminder_jobs",
+      "message_records",
+      "delivery_attempts",
+      "message_status_events",
+      "renewal_cursors"
+    ],
+    "views": [],
+    "dependencies": {
+      "IScoring": "http://scoring-service:8000",
+      "IMembership": "http://membership-service:8000"
+    },
+    "external_interfaces": [
+      "IWhatsAppGateway"
+    ]
+  },
+  {
+    "id": "member",
+    "folder": "member-service",
+    "name": "Member Profiles and Measurements",
+    "owner": "Mohamed Soliman",
+    "interface": "IMemberProfile",
+    "requirements": "FR-09, FR-10",
+    "port": 8105,
+    "database": "gymarena_member",
+    "db_user": "gymarena_member",
+    "tables": [
+      "members",
+      "weight_measurements",
+      "member_registered_outbox",
+      "registration_feed_state"
+    ],
+    "views": [],
+    "dependencies": {},
+    "external_interfaces": [
+      "IScaleInput"
+    ]
+  },
+  {
+    "id": "recognition",
+    "folder": "recognition-service",
+    "name": "Face Recognition",
+    "owner": "Mohamed Soliman",
+    "interface": "IRecognition",
+    "requirements": "FR-11, FR-12",
+    "port": 8106,
+    "database": "gymarena_recognition",
+    "db_user": "gymarena_recognition",
+    "tables": [
+      "face_enrollments",
+      "face_references",
+      "identity_contexts"
+    ],
+    "views": [],
+    "dependencies": {
+      "IMemberProfile": "http://member-service:8000"
+    },
+    "external_interfaces": [
+      "ICameraFeed"
+    ]
+  },
+  {
+    "id": "challenge",
+    "folder": "challenge-service",
+    "name": "Assessment and Challenges",
+    "owner": "Mohamed Hegazy",
+    "interface": "IChallenge",
+    "requirements": "FR-13, FR-14",
+    "port": 8107,
+    "database": "gymarena_challenge",
+    "db_user": "gymarena_challenge",
+    "tables": [
+      "assessments",
+      "level_approvals",
+      "current_levels",
+      "challenge_rule_versions",
+      "challenge_assignments"
+    ],
+    "views": [],
+    "dependencies": {
+      "IMemberProfile": "http://member-service:8000",
+      "IScoring": "http://scoring-service:8000"
+    },
+    "external_interfaces": []
+  },
+  {
+    "id": "scoring",
+    "folder": "scoring-service",
+    "name": "Scoring and Leaderboards",
+    "owner": "Mohamed Hegazy",
+    "interface": "IScoring",
+    "requirements": "FR-15, FR-16",
+    "port": 8108,
+    "database": "gymarena_scoring",
+    "db_user": "gymarena_scoring",
+    "tables": [
+      "member_scores",
+      "processed_sessions",
+      "score_entries",
+      "leaderboard_state",
+      "leaderboard_outbox",
+      "leaderboard_outbox_members",
+      "registration_cursors"
+    ],
+    "views": [
+      "overall_leaderboard",
+      "comparable_leaderboard"
+    ],
+    "dependencies": {
+      "IMemberProfile": "http://member-service:8000",
+      "ISessionControl": "http://session-service:8000"
+    },
+    "external_interfaces": []
+  }
+]
