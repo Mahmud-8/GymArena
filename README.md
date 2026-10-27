@@ -1,20 +1,22 @@
 # GymArena
 
-GymArena combines personalized camera-based fitness challenges with subscription expiry monitoring and WhatsApp reminders. The first prototype supports squats and jumping jacks, one participant or a local 1v1 session, one camera and a shared display.
+GymArena is being developed to combine personalized camera-based fitness challenges with subscription expiry monitoring and WhatsApp reminders. The planned workout prototype covers squats and jumping jacks, solo and local 1v1 sessions, one camera and a shared display. The current implementation is the eight-service Docker and database foundation described below.
 
 Alamein International University · CSE454 Advanced Software Engineering
 
 ## Project links
 
 - Repository: https://github.com/Mahmud-8/GymArena
+- [Foundation build and publication workflow](https://github.com/Mahmud-8/GymArena/actions/workflows/foundation.yml)
+- [Public GHCR packages and image names](docs/github-delivery.md)
 - Figma design foundations: https://www.figma.com/design/BLI0uf9XDv3LMcz7EUFYSU
 - [26-screen interface source](design/index.html) and [SVG screen files](design/screens/). Download the HTML file and open it in a browser to review the interactive prototype.
 - Native Figma screen import is pending because the connected Starter account reached its native-editing tool allowance.
-- Jira board: **Pending — the board is being prepared.** Replace this line with the real board URL when available.
+- Jira board: the live board link and sprint evidence will be verified in the project-management step.
 
 ## Current status
 
-This local foundation adds eight separately runnable FastAPI services, PostgreSQL schemas with isolated service logins, multi-stage Dockerfiles and Docker Compose. Endpoints currently cover service metadata, liveness and database readiness. Application features, authentication, hardware integration and performance validation remain planned work. Screens and example values are design data, not measured results.
+The foundation provides eight separately runnable FastAPI services, PostgreSQL schemas with isolated service logins, multi-stage Dockerfiles and Docker Compose. Endpoints currently cover service metadata, liveness and database readiness. Application features, authentication, hardware integration and performance validation remain planned work. Screens and example values are design data, not measured results.
 
 From the repository root, run `docker compose up`. See [Docker setup and current verification](docs/docker-foundation.md).
 
@@ -60,7 +62,7 @@ The monorepo now has eight separate service foundations, each with its own FastA
 | Messaging | WhatsApp Business Platform Cloud API | Use designated test recipients and record available delivery acknowledgements. |
 | Development and checks | Docker Compose, pytest, Vitest and Playwright | Repeatable local setup and domain, UI and integration checks as code is implemented. |
 
-Exact dependency versions will be pinned in lockfiles after a camera, model and scale compatibility check. The pose model does not establish member identity: confirmed floor positions and interruption recovery remain application responsibilities.
+Foundation runtime versions and wheel hashes are pinned in `infra/requirements.lock`. Vision and device dependencies will be pinned after the camera, model and scale compatibility checks. The pose model does not establish member identity: confirmed floor positions and interruption recovery remain application responsibilities.
 
 ## Planned folder structure
 
@@ -74,13 +76,13 @@ Exact dependency versions will be pinned in lockfiles after a camera, model and 
 | `packages/contracts/` | Shared API schemas and domain event definitions. |
 | `packages/ui/` | Shared interface components and design tokens. |
 | `docs/` | Architecture decisions, GUI traceability and setup status. |
-| `tests/` | Planned cross-service acceptance and integration checks. |
+| `tests/` | Implemented foundation smoke checks; functional acceptance tests remain planned. |
 | `infra/` | Docker bootstrap, dependency pins and service inventory. |
 | `.github/` | CODEOWNERS and pull request guidance. |
 
 ## Branches and collaboration
 
-- `main`: proposal/release baseline. A protection rule requiring one approved pull request and resolved conversations has been prepared; GitHub is waiting for owner re-authentication before it can be saved. Until that step is confirmed, do not treat `main` as protected.
+- `main`: release baseline. Use the foundation workflow result for the exact current commit. Branch protection is not configured; the documented review process remains a team practice.
 - `develop`: integration branch for reviewed service work.
 - `feature/<service-folder>`: one branch for each service, maintained by its owner in the table above.
 
