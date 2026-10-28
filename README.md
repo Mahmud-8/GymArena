@@ -1,6 +1,6 @@
 # GymArena
 
-GymArena is being developed to combine personalized camera-based fitness challenges with subscription expiry monitoring and WhatsApp reminders. The planned workout prototype covers squats and jumping jacks, solo and local 1v1 sessions, one camera and a shared display. The current implementation is the eight-service Docker and database foundation described below.
+GymArena is being developed to combine personalized camera-based fitness challenges with subscription expiry monitoring and WhatsApp reminders. The planned workout prototype covers squats and jumping jacks, solo and local 1v1 sessions, one camera and a shared display. The current implementation includes the eight-service Docker/database foundation and member registration/profile correction described below.
 
 Alamein International University · CSE454 Advanced Software Engineering
 
@@ -12,15 +12,17 @@ Alamein International University · CSE454 Advanced Software Engineering
 - Figma design foundations: https://www.figma.com/design/BLI0uf9XDv3LMcz7EUFYSU
 - [26-screen interface source](design/index.html) and [SVG screen files](design/screens/). Download the HTML file and open it in a browser to review the interactive prototype.
 - Native Figma screen import is pending because the connected Starter account reached its native-editing tool allowance.
-- Jira board: the live board link and sprint evidence will be verified in the project-management step.
+- [Jira board](https://7udaemad.atlassian.net/jira/software/c/projects/GYM/boards/3/backlog)
 
 ## Current status
 
-The foundation provides eight separately runnable FastAPI services, PostgreSQL schemas with isolated service logins, multi-stage Dockerfiles and Docker Compose. Endpoints currently cover service metadata, liveness and database readiness. Application features, authentication, hardware integration and performance validation remain planned work. Screens and example values are design data, not measured results.
+Eight FastAPI services run with isolated PostgreSQL logins and Docker Compose. Member Service now implements US-17/GYM-17 and US-18/GYM-18: validated registration, a reusable private member code, member confirmation and protected profile correction. Open the [member kiosk](http://localhost:8105/kiosk/) after starting Compose. Registration persists a profile and ordered outbox event atomically; retries do not create duplicate members. See [the implemented API, migration and checks](docs/member-registration.md).
+
+The other seven services still provide metadata, liveness and database readiness. Measurement, camera/face recognition, workouts, memberships, messaging, scoring and the animated public leaderboard remain planned. The registration feed is a prerequisite for the leaderboard; it does not yet create leaderboard entries. The existing design screens and their example values remain design data.
 
 From the repository root, run `docker compose up`. See [Docker setup and current verification](docs/docker-foundation.md).
 
-The [foundation CI and GHCR workflow](.github/workflows/foundation.yml) builds the eight services, runs operational smoke checks, and publishes the tested images after verification. See [CI execution and evidence](docs/ci-and-ghcr.md) for the branch triggers, image tags and retained results. Functional application features remain subsequent work.
+The [CI and GHCR workflow](.github/workflows/foundation.yml) builds the eight services, runs operational and member acceptance checks, and publishes tested images on its configured release branches. Pull requests verify without publishing. See [CI execution and evidence](docs/ci-and-ghcr.md); a feature branch is not the released main baseline until its reviewed promotion is merged.
 
 ## Team
 
@@ -44,7 +46,7 @@ The [foundation CI and GHCR workflow](.github/workflows/foundation.yml) builds t
 | challenge-service | Mohamed Hegazy | [@mohamed-hegazy1](https://github.com/mohamed-hegazy1) | FR-13, FR-14 |
 | scoring-service | Mohamed Hegazy | [@mohamed-hegazy1](https://github.com/mohamed-hegazy1) | FR-15, FR-16 |
 
-The monorepo now has eight separate service foundations, each with its own FastAPI process and Dockerfile, matching the PM1 design and per-service container requirement. Each service uses only its own database login. A notification worker, local device adapters and the web application remain later work. See [the deployment decision](docs/architecture-decisions/0001-eight-service-runtime.md).
+The monorepo has eight services, each with its own FastAPI process and Dockerfile. Each uses only its own database login. Member Service serves the built React kiosk on the same origin; a notification worker, local device adapters and remaining web views are later work. See [the deployment decision](docs/architecture-decisions/0001-eight-service-runtime.md).
 
 ## Planned technology stack
 
@@ -76,7 +78,7 @@ Foundation runtime versions and wheel hashes are pinned in `infra/requirements.l
 | `packages/contracts/` | Shared API schemas and domain event definitions. |
 | `packages/ui/` | Shared interface components and design tokens. |
 | `docs/` | Architecture decisions, GUI traceability and setup status. |
-| `tests/` | Implemented foundation smoke checks; functional acceptance tests remain planned. |
+| `tests/` | Operational smoke checks plus member domain, authorization, HTTP and PostgreSQL acceptance checks. |
 | `infra/` | Docker bootstrap, dependency pins and service inventory. |
 | `.github/` | CODEOWNERS and pull request guidance. |
 

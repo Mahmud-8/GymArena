@@ -37,6 +37,8 @@ jobs:
         run: docker compose --progress plain up -d --build --wait --wait-timeout 180
       - name: Verify HTTP contracts ownership and database recovery
         run: python tests/smoke_foundation.py --exercise-recovery --report ci-evidence/smoke.json
+      - name: Verify member registration correction and transaction safety
+        run: python tests/smoke_members.py --report ci-evidence/members.json
       - name: Export the exact tested images
         if: github.event_name != 'pull_request'
         run: python scripts/ci_images.py export --directory ci-images

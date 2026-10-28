@@ -213,6 +213,9 @@ services:
       DB_NAME: gymarena_member
       DB_USER: gymarena_member
       DB_PASSWORD_FILE: /credentials/password
+      MEMBER_SESSION_KEY_FILE: /credentials/session_key
+      MEMBER_STAFF_KEY_FILE: /credentials/staff_key
+      MEMBER_COOKIE_SECURE: ${MEMBER_COOKIE_SECURE:-false}
     volumes:
       - member-credentials:/credentials:ro
     ports:

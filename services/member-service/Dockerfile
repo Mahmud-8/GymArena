@@ -1,4 +1,12 @@
 ARG PYTHON_IMAGE=python:3.12-slim-bookworm
+FROM node:24-bookworm-slim AS kiosk
+WORKDIR /web
+RUN npm install --global --ignore-scripts pnpm@11.25.0
+COPY apps/web/package.json apps/web/pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile --ignore-scripts
+COPY apps/web/ ./
+RUN pnpm build
+
 FROM ${PYTHON_IMAGE} AS dependencies
 WORKDIR /build
 COPY infra/requirements.lock ./requirements.lock
@@ -11,10 +19,15 @@ WORKDIR /app
 COPY --from=dependencies /opt/venv /opt/venv
 COPY --chown=10001:10001 packages/runtime/gymarena_runtime ./gymarena_runtime
 COPY --chown=10001:10001 services/member-service/api ./api
+COPY --chown=10001:10001 services/member-service/application ./application
+COPY --chown=10001:10001 services/member-service/domain ./domain
+COPY --chown=10001:10001 services/member-service/infrastructure ./infrastructure
+COPY --chown=10001:10001 services/member-service/db ./db
+COPY --from=kiosk --chown=10001:10001 /web/dist ./web
 ARG VCS_REF=working-tree
 LABEL org.opencontainers.image.source="https://github.com/Mahmud-8/GymArena" \
       org.opencontainers.image.revision="${VCS_REF}"
-LABEL org.opencontainers.image.title="GymArena member-service foundation"
+LABEL org.opencontainers.image.title="GymArena member registration and profile service"
 USER 10001:10001
 EXPOSE 8000
 HEALTHCHECK --interval=10s --timeout=5s --start-period=15s --retries=5 \

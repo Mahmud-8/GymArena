@@ -45,12 +45,14 @@ class DatabaseSettings:
         )
 
 
-def create_app(config: dict) -> FastAPI:
+def create_app(config: dict, *, lifespan=None) -> FastAPI:
     settings = DatabaseSettings.from_environment()
+    implemented = config.get("implemented_operations", [])
     app = FastAPI(
-        title=config["name"] + " foundation",
-        version="0.1.0",
-        description=(
+        title=config["name"] + (" service" if implemented else " foundation"),
+        version="0.2.0" if implemented else "0.1.0",
+        lifespan=lifespan,
+        description=("Registration/profile slice with the remaining business operations planned." if implemented else
             "Operational service skeleton. The named business interface is planned; "
             "its functional operations are not implemented."
         ),
@@ -60,9 +62,10 @@ def create_app(config: dict) -> FastAPI:
     def metadata():
         return {
             "service": config["folder"],
-            "stage": "foundation",
-            "implemented": ["service_metadata", "liveness", "database_readiness"],
-            "functional_operations_implemented": False,
+            "stage": "functional_slice" if implemented else "foundation",
+            "implemented": ["service_metadata", "liveness", "database_readiness", *implemented],
+            "functional_operations_implemented": bool(implemented),
+            "functional_interface_complete": False,
             "planned_interface": config["interface"],
             "planned_requirements": config["requirements"],
             "planned_service_dependencies": config["dependencies"],

@@ -14,4 +14,4 @@ Replace the example branch with your assigned service branch. Commit using your 
 
 Before opening a pull request, check the acceptance criteria for the story, run the checks relevant to the code you changed, and describe the result honestly. Open feature pull requests against `develop`; use `main` only for a reviewed integration baseline. Request review from a teammate who did not author the change.
 
-Only claim a test passed if it was actually run. The Docker foundation now starts with `docker compose up` and provides health and database readiness endpoints. Business features remain subsequent work. See [Docker setup](docs/docker-foundation.md) for the smoke checks and current evidence.
+Only claim a test passed if it was actually run. Docker Compose starts the eight services and the Member kiosk. Run both the operational checks and the isolated member acceptance suite when changing registration/profile code. See [Docker setup](docs/docker-foundation.md) and [member checks](docs/member-registration.md). Remaining business features are subsequent work.
