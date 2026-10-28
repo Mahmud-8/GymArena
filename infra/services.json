@@ -110,13 +110,16 @@
       "members",
       "weight_measurements",
       "member_registered_outbox",
-      "registration_feed_state"
+      "registration_feed_state",
+      "member_registration_requests"
     ],
     "views": [],
     "dependencies": {},
     "external_interfaces": [
       "IScaleInput"
-    ]
+    ],
+    "implemented_operations": ["register", "resolve", "get", "correct", "registered"],
+    "implemented_http_paths": ["/api/members", "/api/member-access", "/api/member-session", "/api/members/{member_id}", "/api/member-registrations"]
   },
   {
     "id": "recognition",

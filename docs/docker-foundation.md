@@ -1,6 +1,6 @@
 # GymArena Docker foundation
 
-This step supplies eight runnable service foundations and their PostgreSQL schemas. Each service has its own multi-stage Dockerfile, FastAPI process and database login. Application features are still subsequent work: health does not imply that member registration, workout tracking, scoring, reminders, authentication or monitor animation is implemented.
+Compose supplies eight services and their owned PostgreSQL schemas. Each has its own multi-stage Dockerfile, FastAPI process and database login. Member registration and protected profile correction are now implemented; see [the Member slice](member-registration.md). Workout tracking, scoring, reminders, hardware and monitor animation remain subsequent work. Health alone does not establish functional acceptance.
 
 ## Start
 
@@ -34,15 +34,15 @@ docker compose ps
 
 Each address exposes service metadata at `/`, process health at `/health/live`, database readiness at `/health/ready`, and API documentation at `/docs`. Readiness requires the service's expected tables and views. It returns HTTP 503 when that owned database is unavailable or incomplete. Database faults leave liveness separate, allowing recovery without pretending the service is ready.
 
-The metadata declares the planned business interface and dependencies, and explicitly reports `functional_operations_implemented: false`. No functional API routes or fake workout results are supplied. There is no frontend or device worker in this foundation.
+Metadata declares the planned business interface and dependencies. Member Service reports `functional_operations_implemented: true` and lists its implemented operations; the other seven report false. All report `functional_interface_complete: false`. Member Service also serves its kiosk at `/kiosk/`. There is no device worker or fake workout result.
 
 ## Ownership and startup
 
-The one-shot `credentials` container generates nine random passwords into separate Docker volumes: one administrator password and one per service. Existing valid credential files are preserved. Each application mounts only its own credential volume read-only; no password values appear in Compose, source control or initialization logs.
+The one-shot `credentials` container generates nine random passwords into separate Docker volumes: one administrator password and one per service. It also generates Member signing/staff keys in the Member credential volume. Existing valid files are preserved. Each application mounts only its own credential volume read-only; no secret values appear in Compose, source control or initialization logs.
 
 The PostgreSQL container mounts all credentials for its initial administrator setup. It creates eight roles and databases, revokes public database connection privileges and applies the eight Part A SQL schemas as their owning roles. PostgreSQL is reachable on the Compose network, without a published host database port. Each application uses its own role, not the administrator.
 
-The application runtime runs as UID 10001 with a read-only application filesystem, dropped capabilities, a small temporary directory and localhost-only published HTTP ports. The bootstrap container runs as root only to write its credential volumes; it has no network connection. These are local development settings. Authentication, authorization, TLS and production secret management require subsequent implementation.
+The application runtime runs as UID 10001 with a read-only application filesystem, dropped capabilities, a small temporary directory and localhost-only published HTTP ports. The bootstrap container runs as root only to write its credential volumes; it has no network connection. Member confirmation/authorization covers this local slice. A full staff identity system, TLS deployment and production secret management remain subsequent work.
 
 Canonical service dependencies remain planned API contracts. They do not create a circular Compose readiness dependency between Challenge, Session and Scoring. Each API waits on the owned database. Cross-service business clients will be added with the corresponding features.
 
@@ -56,7 +56,7 @@ docker compose down
 
 Back up the database and its credential volumes together. Removing only credentials while retaining database data will create a password mismatch at the next initialization. The initial SQL runs only on an empty PostgreSQL data volume. Later schema edits need versioned migrations; changing an SQL file does not migrate existing data.
 
-The schemas contain 38 tables and two Scoring views, with local foreign keys and stable remote references. SQL establishes the structure. It does not implement approved targets, score transactions, ordered feed consumers, identity confirmation or leaderboard animation.
+The original schemas contain 38 tables and two Scoring views. Member migration `002_registration_requests.sql` adds one retry-request table on startup, bringing the current total to 39 tables and two views. This additive migration preserves existing data. SQL alone does not implement approved targets, score transactions, feed consumers or leaderboard animation.
 
 ## Verify
 
@@ -92,4 +92,4 @@ The runtime dependency lockfile pins all resolved versions and wheel hashes. Doc
 
 ## Validation record
 
-See `docker-foundation-verification.json` beside this guide for the actual checks and their scope. GHCR publishing, GitHub Actions, owner review and functional acceptance are separate next steps.
+`docker-foundation-verification.json` is the historical initial foundation record. Current checks run against each revision in GitHub Actions; [delivery evidence](github-delivery.md) identifies the integrated baseline. See [member verification](member-registration.md#verification) for the added functional suite. Independent owner review and remaining functional acceptance are separate from passing automation.

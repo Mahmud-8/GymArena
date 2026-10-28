@@ -1,12 +1,12 @@
 # Foundation CI and GHCR publication
 
-`.github/workflows/foundation.yml` builds all eight foundation services, runs the full operational smoke check, and publishes the exact tested images to GitHub Container Registry. Domain features remain later work; the workflow does not establish functional registration, exercise tracking, scoring, reminders or animation.
+`.github/workflows/foundation.yml` builds all eight services, runs operational and member acceptance checks, and publishes the exact tested images on configured release branches. The member suite verifies registration/profile correction. Exercise tracking, scoring, reminders and animation remain later work.
 
 ## Execution
 
 Pushes to `main`, `develop` and `feature/docker-foundation` run verification followed by publication. Pull requests targeting `main` or `develop` run verification with no package publication. Manual runs are supported once the workflow exists on the default branch. No automatic merge is configured.
 
-The verification job has read-only repository permission. It starts a unique Compose project on an Ubuntu runner, waits for all services and PostgreSQL, and runs `tests/smoke_foundation.py --exercise-recovery`. The checks include 56 denied cross-service database connections, non-root processes, read-only application filesystems, honest readiness 503 during a database outage, recovery and persistence of synthetic data.
+The verification job has read-only repository permission. It starts a unique Compose project on an Ubuntu runner, waits for all services and PostgreSQL, and runs `tests/smoke_foundation.py --exercise-recovery` followed by `tests/smoke_members.py`. The operational checks include 56 denied cross-service connections, non-root processes, read-only filesystems, readiness 503 during a database outage, recovery and synthetic persistence. The Member suite covers domain/confirmation rules, real registration/correction transactions, access controls, retries, concurrency, feed pagination and restart persistence. Both JSON reports are retained with the run evidence.
 
 After verification, `scripts/ci_images.py export` checks the source/revision labels and exports all eight tested image IDs into one compressed Docker archive with a SHA256 manifest. The temporary image-transfer artifact lasts seven days; smoke results and logs last 90 days. Ephemeral runner databases and generated credentials are removed after each verification job.
 

@@ -67,11 +67,12 @@ def main():
     for s in SERVICES:
         status, data = request(s, "/")
         assert status == 200 and data["service"] == s["folder"]
-        assert data["functional_operations_implemented"] is False
+        assert data["functional_operations_implemented"] is bool(s.get("implemented_operations"))
+        assert data["functional_interface_complete"] is False
         assert request(s, "/health/live")[0] == 200
         assert request(s, "/health/ready")[0] == 200
         status, schema = request(s, "/openapi.json")
-        assert status == 200 and set(schema["paths"]) == {"/", "/health/live", "/health/ready"}
+        assert status == 200 and set(schema["paths"]) == {"/", "/health/live", "/health/ready", *s.get("implemented_http_paths", [])}
         checks.append({"check": "http_and_contract_boundary", "service": s["folder"], "passed": True})
         source = CONNECTION + f'''
 with psycopg.connect(dbname={s['database']!r}, **params) as c:
