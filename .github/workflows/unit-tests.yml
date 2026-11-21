@@ -1,0 +1,52 @@
+name: Unit and contract tests
+
+on:
+  push:
+    branches: [main, develop, 'feature/**', 'test/**']
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: unit-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pytest:
+    name: Run pytest with coverage
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out the tested revision
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Select Python 3.12
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - name: Install the locked runtime and the test tools
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install --require-hashes -r infra/requirements.lock
+          python -m pip install -r tests/requirements.txt
+      - name: Run unit and contract tests with coverage
+        run: |
+          python -m pytest -q \
+            --cov=packages/runtime/gymarena_runtime \
+            --cov=services \
+            --cov-report=term-missing \
+            --cov-report=xml:coverage/coverage.xml \
+            --cov-report=html:coverage/html \
+            --junitxml=coverage/junit.xml
+      - name: Retain test and coverage evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: unit-test-evidence-${{ github.sha }}
+          path: coverage/
+          if-no-files-found: error
+          retention-days: 30
