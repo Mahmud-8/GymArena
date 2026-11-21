@@ -1,0 +1,5 @@
+# Test-only dependencies. The service runtime comes from infra/requirements.lock.
+pytest==9.2.0
+pytest-cov==7.1.0
+httpx==0.28.1
+PyYAML==6.0.4
