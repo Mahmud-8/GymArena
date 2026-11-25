@@ -1,4 +1,4 @@
-# Session Control
+# Session Management
 
 Owner: Ahmed Ebrahim ([@AhmedEbrahem25](https://github.com/AhmedEbrahem25))
 

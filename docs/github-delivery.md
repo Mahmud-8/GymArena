@@ -14,14 +14,14 @@ This document does not assert an independent teammate approval. Branch protectio
 
 | Service | Public GHCR package |
 | --- | --- |
-| Exercise Tracking | [gymarena-exercise-tracking-service](https://github.com/users/Mahmud-8/packages/container/package/gymarena-exercise-tracking-service) |
-| Membership | [gymarena-membership-service](https://github.com/users/Mahmud-8/packages/container/package/gymarena-membership-service) |
-| Session Control | [gymarena-session-service](https://github.com/users/Mahmud-8/packages/container/package/gymarena-session-service) |
-| Notifications | [gymarena-notification-service](https://github.com/users/Mahmud-8/packages/container/package/gymarena-notification-service) |
-| Member Profiles | [gymarena-member-service](https://github.com/users/Mahmud-8/packages/container/package/gymarena-member-service) |
-| Face Recognition | [gymarena-recognition-service](https://github.com/users/Mahmud-8/packages/container/package/gymarena-recognition-service) |
-| Assessment and Challenges | [gymarena-challenge-service](https://github.com/users/Mahmud-8/packages/container/package/gymarena-challenge-service) |
-| Scoring and Leaderboards | [gymarena-scoring-service](https://github.com/users/Mahmud-8/packages/container/package/gymarena-scoring-service) |
+| Exercise Tracking Management | [gymarena-exercise-tracking-service](https://github.com/users/Mahmud-8/packages/container/package/gymarena-exercise-tracking-service) |
+| Membership Management | [gymarena-membership-service](https://github.com/users/Mahmud-8/packages/container/package/gymarena-membership-service) |
+| Session Management | [gymarena-session-service](https://github.com/users/Mahmud-8/packages/container/package/gymarena-session-service) |
+| Notification Management | [gymarena-notification-service](https://github.com/users/Mahmud-8/packages/container/package/gymarena-notification-service) |
+| Member Management | [gymarena-member-service](https://github.com/users/Mahmud-8/packages/container/package/gymarena-member-service) |
+| Face Recognition Management | [gymarena-recognition-service](https://github.com/users/Mahmud-8/packages/container/package/gymarena-recognition-service) |
+| Challenge Management | [gymarena-challenge-service](https://github.com/users/Mahmud-8/packages/container/package/gymarena-challenge-service) |
+| Score Management | [gymarena-scoring-service](https://github.com/users/Mahmud-8/packages/container/package/gymarena-scoring-service) |
 
 Each package has source-commit tags `sha-<full-sha>`. Successful pushes to the foundation branch also publish `foundation`; `develop` pushes publish `develop`; successful `main` pushes publish `latest`. Use the publication artifact's digest reference when an immutable image identity is required.
 

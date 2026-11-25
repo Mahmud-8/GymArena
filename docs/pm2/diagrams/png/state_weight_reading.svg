@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1330" height="410" viewBox="0 0 1330 410">
+<rect x="0" y="0" width="1330" height="410" fill="#FFFFFF"/>
+<text x="665.0" y="24.0" font-family="Arial, Helvetica, sans-serif" font-size="14" text-anchor="middle" fill="#000000" font-weight="bold">Member Management - State Diagram (main object: WeightReading)</text>
+<circle cx="50.0" cy="124.0" r="9" fill="#1F2937" stroke="#1F2937" stroke-width="1.0"/>
+<rect x="440.0" y="100.0" width="240.0" height="48.0" rx="14" ry="14" fill="#EEEDFC" stroke="#5B4BC4" stroke-width="2"/>
+<text x="560.0" y="129.5" font-family="Arial, Helvetica, sans-serif" font-size="15" text-anchor="middle" fill="#23205C" font-weight="bold">Pending Confirmation</text>
+<rect x="1010.0" y="100.0" width="170.0" height="48.0" rx="14" ry="14" fill="#EEEDFC" stroke="#5B4BC4" stroke-width="2"/>
+<text x="1095.0" y="129.5" font-family="Arial, Helvetica, sans-serif" font-size="15" text-anchor="middle" fill="#23205C" font-weight="bold">Confirmed</text>
+<rect x="470.0" y="300.0" width="180.0" height="48.0" rx="14" ry="14" fill="#EEEDFC" stroke="#5B4BC4" stroke-width="2"/>
+<text x="560.0" y="329.5" font-family="Arial, Helvetica, sans-serif" font-size="15" text-anchor="middle" fill="#23205C" font-weight="bold">Discarded</text>
+<polyline points="59.0,124.0 440.0,124.0" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<polyline points="428.0,129.4 440.0,124.0 428.0,118.6" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<text x="72.0" y="102.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#1F2937">capture(raw) [raw.stable and</text>
+<text x="72.0" y="119.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#1F2937">20 &lt;= raw.weightKg &lt;= 300]</text>
+<polyline points="680.0,124.0 1010.0,124.0" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<polyline points="998.0,129.4 1010.0,124.0 998.0,118.6" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<text x="694.0" y="102.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#1F2937">confirm(memberId) [memberId = owner]</text>
+<text x="694.0" y="119.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#C0392B">/ confirmedAt = now</text>
+<polyline points="560.0,148.0 560.0,300.0" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<polyline points="554.6,288.0 560.0,300.0 565.4,288.0" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<text x="570.0" y="230.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#1F2937">reject()</text>
+<circle cx="1260.0" cy="124.0" r="12" fill="#FFFFFF" stroke="#1F2937" stroke-width="2"/>
+<circle cx="1260.0" cy="124.0" r="7" fill="#1F2937" stroke="#1F2937" stroke-width="1.0"/>
+<polyline points="1180.0,124.0 1248.0,124.0" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<polyline points="1236.0,129.4 1248.0,124.0 1236.0,118.6" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<circle cx="760.0" cy="324.0" r="12" fill="#FFFFFF" stroke="#1F2937" stroke-width="2"/>
+<circle cx="760.0" cy="324.0" r="7" fill="#1F2937" stroke="#1F2937" stroke-width="1.0"/>
+<polyline points="650.0,324.0 748.0,324.0" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<polyline points="736.0,329.4 748.0,324.0 736.0,318.6" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<polygon points="40.0,240.0 310.0,240.0 320.0,250.0 320.0,348.0 40.0,348.0" fill="#FEFFDD" stroke="#181818" stroke-width="1.0"/>
+<polyline points="310.0,240.0 310.0,250.0 320.0,250.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<text x="50.0" y="258.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">Invalid reading (unstable, &lt; 20 kg or &gt; 300 kg):</text>
+<text x="50.0" y="274.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">InvalidScaleReadingException, no object is</text>
+<text x="50.0" y="290.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">created and the last accepted weight is kept</text>
+<text x="50.0" y="306.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">(FR-10.4).</text>
+<text x="50.0" y="322.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">Rejected: confirm() by another member,</text>
+<text x="50.0" y="338.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">confirm()/reject() in Confirmed or Discarded.</text>
+</svg>

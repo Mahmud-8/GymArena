@@ -25,3 +25,6 @@ captures/
 *.task
 *.db
 *.sqlite*
+
+# Java domain module build output
+domain-java/target/

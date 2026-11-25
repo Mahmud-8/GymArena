@@ -1,4 +1,4 @@
-# Membership
+# Membership Management
 
 Owner: Mahmoud Emad ([@Mahmud-8](https://github.com/Mahmud-8))
 

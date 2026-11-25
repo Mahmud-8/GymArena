@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1018" height="619" viewBox="0 0 1018 619">
+<rect x="0" y="0" width="1018" height="619" fill="#FFFFFF"/>
+<text x="509.0" y="24.0" font-family="Arial, Helvetica, sans-serif" font-size="14" text-anchor="middle" fill="#000000" font-weight="bold">Membership Management - Record a Membership Renewal (Sequence Diagram)</text>
+<line x1="75.0" y1="114.0" x2="75.0" y2="531.0" stroke="#555555" stroke-width="1.0" stroke-dasharray="5,4"/>
+<line x1="355.0" y1="114.0" x2="355.0" y2="531.0" stroke="#555555" stroke-width="1.0" stroke-dasharray="5,4"/>
+<line x1="701.0" y1="114.0" x2="701.0" y2="531.0" stroke="#555555" stroke-width="1.0" stroke-dasharray="5,4"/>
+<line x1="896.0" y1="114.0" x2="896.0" y2="531.0" stroke="#555555" stroke-width="1.0" stroke-dasharray="5,4"/>
+<rect x="696.0" y="173.0" width="10.0" height="31.0" rx="0" ry="0" fill="#FFFFFF" stroke="#181818" stroke-width="1.0"/>
+<rect x="891.0" y="449.0" width="10.0" height="12.0" rx="0" ry="0" fill="#FFFFFF" stroke="#181818" stroke-width="1.0"/>
+<rect x="350.0" y="142.0" width="10.0" height="348.0" rx="0" ry="0" fill="#FFFFFF" stroke="#181818" stroke-width="1.0"/>
+<rect x="44.0" y="221.0" width="940.0" height="244.0" rx="0" ry="0" fill="none" stroke="#181818" stroke-width="1.2"/>
+<polygon points="44.0,221.0 74.0,221.0 74.0,233.0 68.0,239.0 44.0,239.0" fill="#EEEEEE" stroke="#181818" stroke-width="1.0"/>
+<text x="50.0" y="234.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000" font-weight="bold">alt</text>
+<rect x="79.0" y="223.0" width="87.0" height="16.0" rx="0" ry="0" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0"/>
+<text x="82.0" y="235.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000" font-weight="bold">[found = false]</text>
+<line x1="44.0" y1="284.0" x2="984.0" y2="284.0" stroke="#181818" stroke-width="1.0" stroke-dasharray="5,4"/>
+<rect x="49.0" y="286.0" width="82.0" height="16.0" rx="0" ry="0" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0"/>
+<text x="52.0" y="298.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000" font-weight="bold">[found = true]</text>
+<polyline points="75.0,142.0 350.0,142.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polygon points="350.0,142.0 340.0,146.5 340.0,137.5" fill="#181818" stroke="#181818" stroke-width="1.0"/>
+<text x="83.0" y="137.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">1: renew("MBR-0042", 2027-02-28, "STF-07")</text>
+<polyline points="360.0,173.0 696.0,173.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polygon points="696.0,173.0 686.0,177.5 686.0,168.5" fill="#181818" stroke="#181818" stroke-width="1.0"/>
+<text x="368.0" y="168.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">1.1: exists("MBR-0042")</text>
+<polyline points="696.0,204.0 360.0,204.0" fill="none" stroke="#181818" stroke-width="1.0" stroke-dasharray="5,4"/>
+<polyline points="369.0,199.9 360.0,204.0 369.0,208.1" fill="none" stroke="#181818" stroke-width="1.0"/>
+<text x="378.0" y="199.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">true</text>
+<polyline points="350.0,261.0 75.0,261.0" fill="none" stroke="#181818" stroke-width="1.0" stroke-dasharray="5,4"/>
+<polyline points="84.0,256.9 75.0,261.0 84.0,265.1" fill="none" stroke="#181818" stroke-width="1.0"/>
+<text x="93.0" y="256.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">MemberNotFoundException</text>
+<polyline points="360.0,314.0 392.0,314.0 392.0,328.0 361.0,328.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polygon points="361.0,328.0 371.0,323.5 371.0,332.5" fill="#181818" stroke="#181818" stroke-width="1.0"/>
+<text x="368.0" y="309.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">1.2: m42 := findByMemberId("MBR-0042")</text>
+<polyline points="360.0,359.0 392.0,359.0 392.0,373.0 361.0,373.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polygon points="361.0,373.0 371.0,368.5 371.0,377.5" fill="#181818" stroke="#181818" stroke-width="1.0"/>
+<text x="368.0" y="354.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">1.3: r1 := m42.renew(2027-02-28, "STF-07", now, today)</text>
+<polyline points="360.0,404.0 392.0,404.0 392.0,418.0 361.0,418.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polygon points="361.0,418.0 371.0,413.5 371.0,422.5" fill="#181818" stroke="#181818" stroke-width="1.0"/>
+<text x="368.0" y="399.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">1.4: saveRenewal(m42, r1)</text>
+<polyline points="360.0,449.0 891.0,449.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polygon points="891.0,449.0 881.0,453.5 881.0,444.5" fill="#181818" stroke="#181818" stroke-width="1.0"/>
+<text x="368.0" y="444.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">1.5: publish(RenewalChanged(MBR-0042, 2026-11-30, 2027-02-28))</text>
+<polyline points="350.0,490.0 75.0,490.0" fill="none" stroke="#181818" stroke-width="1.0" stroke-dasharray="5,4"/>
+<polyline points="84.0,485.9 75.0,490.0 84.0,494.1" fill="none" stroke="#181818" stroke-width="1.0"/>
+<text x="93.0" y="485.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">r1 (expiry 2027-02-28, ACTIVE)</text>
+<circle cx="75.0" cy="54.0" r="8" fill="#E6E6E6" stroke="#181818" stroke-width="1.0"/>
+<line x1="75.0" y1="62.0" x2="75.0" y2="80.0" stroke="#181818" stroke-width="1.0"/>
+<line x1="63.0" y1="68.0" x2="87.0" y2="68.0" stroke="#181818" stroke-width="1.0"/>
+<line x1="75.0" y1="80.0" x2="65.0" y2="94.0" stroke="#181818" stroke-width="1.0"/>
+<line x1="75.0" y1="80.0" x2="85.0" y2="94.0" stroke="#181818" stroke-width="1.0"/>
+<text x="75.0" y="109.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="middle" fill="#000000">Staff</text>
+<circle cx="75.0" cy="539.0" r="8" fill="#E6E6E6" stroke="#181818" stroke-width="1.0"/>
+<line x1="75.0" y1="547.0" x2="75.0" y2="565.0" stroke="#181818" stroke-width="1.0"/>
+<line x1="63.0" y1="553.0" x2="87.0" y2="553.0" stroke="#181818" stroke-width="1.0"/>
+<line x1="75.0" y1="565.0" x2="65.0" y2="579.0" stroke="#181818" stroke-width="1.0"/>
+<line x1="75.0" y1="565.0" x2="85.0" y2="579.0" stroke="#181818" stroke-width="1.0"/>
+<text x="75.0" y="594.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="middle" fill="#000000">Staff</text>
+<rect x="270.0" y="84.0" width="170.0" height="30.0" rx="2" ry="2" fill="#E6E6E6" stroke="#181818" stroke-width="1.0"/>
+<text x="355.0" y="103.5" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="middle" fill="#000000">Membership Management</text>
+<rect x="270.0" y="531.0" width="170.0" height="30.0" rx="2" ry="2" fill="#E6E6E6" stroke="#181818" stroke-width="1.0"/>
+<text x="355.0" y="550.5" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="middle" fill="#000000">Membership Management</text>
+<rect x="628.0" y="84.0" width="146.0" height="30.0" rx="2" ry="2" fill="#E6E6E6" stroke="#181818" stroke-width="1.0"/>
+<text x="701.0" y="103.5" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="middle" fill="#000000">Member Management</text>
+<rect x="628.0" y="531.0" width="146.0" height="30.0" rx="2" ry="2" fill="#E6E6E6" stroke="#181818" stroke-width="1.0"/>
+<text x="701.0" y="550.5" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="middle" fill="#000000">Member Management</text>
+<rect x="814.0" y="84.0" width="164.0" height="30.0" rx="2" ry="2" fill="#E6E6E6" stroke="#181818" stroke-width="1.0"/>
+<text x="896.0" y="103.5" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="middle" fill="#000000">Notification Management</text>
+<rect x="814.0" y="531.0" width="164.0" height="30.0" rx="2" ry="2" fill="#E6E6E6" stroke="#181818" stroke-width="1.0"/>
+<text x="896.0" y="550.5" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="middle" fill="#000000">Notification Management</text>
+</svg>
