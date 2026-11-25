@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1380" height="470" viewBox="0 0 1380 470">
+<rect x="0" y="0" width="1380" height="470" fill="#FFFFFF"/>
+<text x="690.0" y="24.0" font-family="Arial, Helvetica, sans-serif" font-size="14" text-anchor="middle" fill="#000000" font-weight="bold">Challenge Management - State Diagram (main object: ChallengeRuleVersion)</text>
+<circle cx="50.0" cy="134.0" r="9" fill="#1F2937" stroke="#1F2937" stroke-width="1.0"/>
+<rect x="380.0" y="110.0" width="170.0" height="48.0" rx="14" ry="14" fill="#EEEDFC" stroke="#5B4BC4" stroke-width="2"/>
+<text x="465.0" y="139.5" font-family="Arial, Helvetica, sans-serif" font-size="15" text-anchor="middle" fill="#23205C" font-weight="bold">Draft</text>
+<rect x="900.0" y="110.0" width="235.0" height="62.0" rx="14" ry="14" fill="#EEEDFC" stroke="#5B4BC4" stroke-width="2"/>
+<text x="1017.5" y="133.0" font-family="Arial, Helvetica, sans-serif" font-size="15" text-anchor="middle" fill="#23205C" font-weight="bold">Approved</text>
+<line x1="900.0" y1="143.0" x2="1135.0" y2="143.0" stroke="#5B4BC4" stroke-width="1.2"/>
+<text x="914.0" y="161.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#C0392B">do / shown before attempts (summary)</text>
+<rect x="380.0" y="320.0" width="170.0" height="48.0" rx="14" ry="14" fill="#EEEDFC" stroke="#5B4BC4" stroke-width="2"/>
+<text x="465.0" y="349.5" font-family="Arial, Helvetica, sans-serif" font-size="15" text-anchor="middle" fill="#23205C" font-weight="bold">Rejected</text>
+<rect x="900.0" y="320.0" width="170.0" height="48.0" rx="14" ry="14" fill="#EEEDFC" stroke="#5B4BC4" stroke-width="2"/>
+<text x="985.0" y="349.5" font-family="Arial, Helvetica, sans-serif" font-size="15" text-anchor="middle" fill="#23205C" font-weight="bold">Superseded</text>
+<polyline points="59.0,134.0 380.0,134.0" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<polyline points="368.0,139.4 380.0,134.0 368.0,128.6" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<text x="72.0" y="112.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#1F2937">create(exercise, level, version, target,</text>
+<text x="72.0" y="129.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#1F2937">time, points, deduction, winnerRule)</text>
+<text x="72.0" y="170.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#1F2937">[target &gt; 0, time &gt; 0, points &gt;= 0]</text>
+<polyline points="550.0,134.0 900.0,134.0" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<polyline points="888.0,139.4 900.0,134.0 888.0,128.6" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<text x="564.0" y="112.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#1F2937">approve(trainerId) [trainerId given]</text>
+<text x="564.0" y="129.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#C0392B">/ approvedBy = trainerId; approvedAt = now</text>
+<polyline points="465.0,158.0 465.0,320.0" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<polyline points="459.6,308.0 465.0,320.0 470.4,308.0" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<text x="475.0" y="250.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#1F2937">reject(trainerId, reason) [reason given]</text>
+<text x="475.0" y="267.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#C0392B">/ rejectionReason = reason</text>
+<polyline points="985.0,172.0 985.0,320.0" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<polyline points="979.6,308.0 985.0,320.0 990.4,308.0" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<text x="995.0" y="255.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#1F2937">supersede() [newer version approved]</text>
+<text x="995.0" y="272.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#C0392B">/ supersededAt = now</text>
+<circle cx="690.0" cy="344.0" r="12" fill="#FFFFFF" stroke="#1F2937" stroke-width="2"/>
+<circle cx="690.0" cy="344.0" r="7" fill="#1F2937" stroke="#1F2937" stroke-width="1.0"/>
+<polyline points="550.0,344.0 678.0,344.0" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<polyline points="666.0,349.4 678.0,344.0 666.0,338.6" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<circle cx="1250.0" cy="344.0" r="12" fill="#FFFFFF" stroke="#1F2937" stroke-width="2"/>
+<circle cx="1250.0" cy="344.0" r="7" fill="#1F2937" stroke="#1F2937" stroke-width="1.0"/>
+<polyline points="1070.0,344.0 1238.0,344.0" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<polyline points="1226.0,349.4 1238.0,344.0 1226.0,338.6" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<polygon points="40.0,280.0 333.0,280.0 343.0,290.0 343.0,356.0 40.0,356.0" fill="#FEFFDD" stroke="#181818" stroke-width="1.0"/>
+<polyline points="333.0,280.0 333.0,290.0 343.0,290.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<text x="50.0" y="298.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">Rejected (IllegalStateException), state unchanged:</text>
+<text x="50.0" y="314.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">- approve() / reject() unless Draft</text>
+<text x="50.0" y="330.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">- supersede() unless Approved</text>
+<text x="50.0" y="346.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">- summary() unless Approved</text>
+</svg>

@@ -1,4 +1,4 @@
-# Exercise Tracking
+# Exercise Tracking Management
 
 Owner: Mahmoud Emad ([@Mahmud-8](https://github.com/Mahmud-8))
 

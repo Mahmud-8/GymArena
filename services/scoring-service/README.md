@@ -1,4 +1,4 @@
-# Scoring and Leaderboards
+# Score Management
 
 Owner: Mohamed Hegazy ([@mohamed-hegazy1](https://github.com/mohamed-hegazy1))
 

@@ -1,4 +1,4 @@
-# Assessment and Challenges
+# Challenge Management
 
 Owner: Mohamed Hegazy ([@mohamed-hegazy1](https://github.com/mohamed-hegazy1))
 

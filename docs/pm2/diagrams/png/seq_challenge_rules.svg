@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="822" viewBox="0 0 920 822">
+<rect x="0" y="0" width="920" height="822" fill="#FFFFFF"/>
+<text x="460.0" y="24.0" font-family="Arial, Helvetica, sans-serif" font-size="14" text-anchor="middle" fill="#000000" font-weight="bold">Challenge Management - Approve and Present Versioned Challenge Rules (Sequence Diagram)</text>
+<line x1="80.0" y1="114.0" x2="80.0" y2="734.0" stroke="#555555" stroke-width="1.0" stroke-dasharray="5,4"/>
+<line x1="205.0" y1="114.0" x2="205.0" y2="734.0" stroke="#555555" stroke-width="1.0" stroke-dasharray="5,4"/>
+<line x1="496.0" y1="114.0" x2="496.0" y2="734.0" stroke="#555555" stroke-width="1.0" stroke-dasharray="5,4"/>
+<line x1="807.0" y1="114.0" x2="807.0" y2="734.0" stroke="#555555" stroke-width="1.0" stroke-dasharray="5,4"/>
+<rect x="491.0" y="142.0" width="10.0" height="292.0" rx="0" ry="0" fill="#FFFFFF" stroke="#181818" stroke-width="1.0"/>
+<rect x="802.0" y="496.0" width="10.0" height="31.0" rx="0" ry="0" fill="#FFFFFF" stroke="#181818" stroke-width="1.0"/>
+<rect x="491.0" y="465.0" width="10.0" height="228.0" rx="0" ry="0" fill="#FFFFFF" stroke="#181818" stroke-width="1.0"/>
+<rect x="412.0" y="294.0" width="474.0" height="56.0" rx="0" ry="0" fill="none" stroke="#181818" stroke-width="1.2"/>
+<polygon points="412.0,294.0 446.0,294.0 446.0,306.0 440.0,312.0 412.0,312.0" fill="#EEEEEE" stroke="#181818" stroke-width="1.0"/>
+<text x="418.0" y="307.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000" font-weight="bold">opt</text>
+<rect x="451.0" y="296.0" width="169.0" height="16.0" rx="0" ry="0" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0"/>
+<text x="454.0" y="308.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000" font-weight="bold">[an approved version exists]</text>
+<polyline points="80.0,142.0 491.0,142.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polygon points="491.0,142.0 481.0,146.5 481.0,137.5" fill="#181818" stroke="#181818" stroke-width="1.0"/>
+<text x="88.0" y="137.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">1: approveRules("CR-SQUAT-2-v4", "TRN-03")</text>
+<polyline points="501.0,173.0 533.0,173.0 533.0,187.0 502.0,187.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polygon points="502.0,187.0 512.0,182.5 512.0,191.5" fill="#181818" stroke="#181818" stroke-width="1.0"/>
+<text x="509.0" y="168.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">1.1: v4 := findRuleVersion("CR-SQUAT-2-v4")</text>
+<polyline points="501.0,218.0 533.0,218.0 533.0,232.0 502.0,232.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polygon points="502.0,232.0 512.0,227.5 512.0,236.5" fill="#181818" stroke="#181818" stroke-width="1.0"/>
+<text x="509.0" y="213.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">1.2: v3 := findApprovedRule("SQUAT", 2)</text>
+<polyline points="501.0,263.0 533.0,263.0 533.0,277.0 502.0,277.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polygon points="502.0,277.0 512.0,272.5 512.0,281.5" fill="#181818" stroke="#181818" stroke-width="1.0"/>
+<text x="509.0" y="258.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">1.3: v4.approve("TRN-03", now)</text>
+<polyline points="501.0,334.0 533.0,334.0 533.0,348.0 502.0,348.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polygon points="502.0,348.0 512.0,343.5 512.0,352.5" fill="#181818" stroke="#181818" stroke-width="1.0"/>
+<text x="509.0" y="329.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">1.4: v3.supersede(now)</text>
+<polyline points="501.0,389.0 533.0,389.0 533.0,403.0 502.0,403.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polygon points="502.0,403.0 512.0,398.5 512.0,407.5" fill="#181818" stroke="#181818" stroke-width="1.0"/>
+<text x="509.0" y="384.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">1.5: saveApproval(v4, v3)</text>
+<polyline points="491.0,434.0 80.0,434.0" fill="none" stroke="#181818" stroke-width="1.0" stroke-dasharray="5,4"/>
+<polyline points="89.0,429.9 80.0,434.0 89.0,438.1" fill="none" stroke="#181818" stroke-width="1.0"/>
+<text x="98.0" y="429.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">v4 (APPROVED, version 4)</text>
+<polyline points="205.0,465.0 491.0,465.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polygon points="491.0,465.0 481.0,469.5 481.0,460.5" fill="#181818" stroke="#181818" stroke-width="1.0"/>
+<text x="213.0" y="460.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">2: presentRules("MBR-0042", "SQUAT")</text>
+<polyline points="501.0,496.0 802.0,496.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polygon points="802.0,496.0 792.0,500.5 792.0,491.5" fill="#181818" stroke="#181818" stroke-width="1.0"/>
+<text x="509.0" y="491.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">2.1: exists("MBR-0042")</text>
+<polyline points="802.0,527.0 501.0,527.0" fill="none" stroke="#181818" stroke-width="1.0" stroke-dasharray="5,4"/>
+<polyline points="510.0,523.0 501.0,527.0 510.0,531.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<text x="519.0" y="522.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">true</text>
+<polyline points="501.0,558.0 533.0,558.0 533.0,572.0 502.0,572.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polygon points="502.0,572.0 512.0,567.5 512.0,576.5" fill="#181818" stroke="#181818" stroke-width="1.0"/>
+<text x="509.0" y="553.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">2.2: 2 := findCurrentLevel("MBR-0042", "SQUAT")</text>
+<polyline points="501.0,603.0 533.0,603.0 533.0,617.0 502.0,617.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polygon points="502.0,617.0 512.0,612.5 512.0,621.5" fill="#181818" stroke="#181818" stroke-width="1.0"/>
+<text x="509.0" y="598.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">2.3: v4 := findApprovedRule("SQUAT", 2)</text>
+<polyline points="501.0,648.0 533.0,648.0 533.0,662.0 502.0,662.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polygon points="502.0,662.0 512.0,657.5 512.0,666.5" fill="#181818" stroke="#181818" stroke-width="1.0"/>
+<text x="509.0" y="643.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">2.4: summary := v4.summary()</text>
+<polyline points="491.0,693.0 205.0,693.0" fill="none" stroke="#181818" stroke-width="1.0" stroke-dasharray="5,4"/>
+<polyline points="214.0,689.0 205.0,693.0 214.0,697.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<text x="223.0" y="688.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">target 22, 120 s, +12 / -3, MOST_REPETITIONS</text>
+<circle cx="80.0" cy="54.0" r="8" fill="#E6E6E6" stroke="#181818" stroke-width="1.0"/>
+<line x1="80.0" y1="62.0" x2="80.0" y2="80.0" stroke="#181818" stroke-width="1.0"/>
+<line x1="68.0" y1="68.0" x2="92.0" y2="68.0" stroke="#181818" stroke-width="1.0"/>
+<line x1="80.0" y1="80.0" x2="70.0" y2="94.0" stroke="#181818" stroke-width="1.0"/>
+<line x1="80.0" y1="80.0" x2="90.0" y2="94.0" stroke="#181818" stroke-width="1.0"/>
+<text x="80.0" y="109.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="middle" fill="#000000">Trainer</text>
+<circle cx="80.0" cy="742.0" r="8" fill="#E6E6E6" stroke="#181818" stroke-width="1.0"/>
+<line x1="80.0" y1="750.0" x2="80.0" y2="768.0" stroke="#181818" stroke-width="1.0"/>
+<line x1="68.0" y1="756.0" x2="92.0" y2="756.0" stroke="#181818" stroke-width="1.0"/>
+<line x1="80.0" y1="768.0" x2="70.0" y2="782.0" stroke="#181818" stroke-width="1.0"/>
+<line x1="80.0" y1="768.0" x2="90.0" y2="782.0" stroke="#181818" stroke-width="1.0"/>
+<text x="80.0" y="797.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="middle" fill="#000000">Trainer</text>
+<circle cx="205.0" cy="54.0" r="8" fill="#E6E6E6" stroke="#181818" stroke-width="1.0"/>
+<line x1="205.0" y1="62.0" x2="205.0" y2="80.0" stroke="#181818" stroke-width="1.0"/>
+<line x1="193.0" y1="68.0" x2="217.0" y2="68.0" stroke="#181818" stroke-width="1.0"/>
+<line x1="205.0" y1="80.0" x2="195.0" y2="94.0" stroke="#181818" stroke-width="1.0"/>
+<line x1="205.0" y1="80.0" x2="215.0" y2="94.0" stroke="#181818" stroke-width="1.0"/>
+<text x="205.0" y="109.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="middle" fill="#000000">Member (kiosk)</text>
+<circle cx="205.0" cy="742.0" r="8" fill="#E6E6E6" stroke="#181818" stroke-width="1.0"/>
+<line x1="205.0" y1="750.0" x2="205.0" y2="768.0" stroke="#181818" stroke-width="1.0"/>
+<line x1="193.0" y1="756.0" x2="217.0" y2="756.0" stroke="#181818" stroke-width="1.0"/>
+<line x1="205.0" y1="768.0" x2="195.0" y2="782.0" stroke="#181818" stroke-width="1.0"/>
+<line x1="205.0" y1="768.0" x2="215.0" y2="782.0" stroke="#181818" stroke-width="1.0"/>
+<text x="205.0" y="797.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="middle" fill="#000000">Member (kiosk)</text>
+<rect x="418.0" y="84.0" width="156.0" height="30.0" rx="2" ry="2" fill="#E6E6E6" stroke="#181818" stroke-width="1.0"/>
+<text x="496.0" y="103.5" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="middle" fill="#000000">Challenge Management</text>
+<rect x="418.0" y="734.0" width="156.0" height="30.0" rx="2" ry="2" fill="#E6E6E6" stroke="#181818" stroke-width="1.0"/>
+<text x="496.0" y="753.5" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="middle" fill="#000000">Challenge Management</text>
+<rect x="734.0" y="84.0" width="146.0" height="30.0" rx="2" ry="2" fill="#E6E6E6" stroke="#181818" stroke-width="1.0"/>
+<text x="807.0" y="103.5" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="middle" fill="#000000">Member Management</text>
+<rect x="734.0" y="734.0" width="146.0" height="30.0" rx="2" ry="2" fill="#E6E6E6" stroke="#181818" stroke-width="1.0"/>
+<text x="807.0" y="753.5" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="middle" fill="#000000">Member Management</text>
+</svg>

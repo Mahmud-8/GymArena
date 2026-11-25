@@ -1,0 +1,210 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="960" viewBox="0 0 1400 960">
+<rect x="0" y="0" width="1400" height="960" fill="#FFFFFF"/>
+<text x="700.0" y="24.0" font-family="Arial, Helvetica, sans-serif" font-size="14" text-anchor="middle" fill="#000000" font-weight="bold">Session Management - Updated Class Diagram (owner: Ahmed Ebrahim)</text>
+<rect x="30.0" y="60.0" width="274.0" height="92.5" rx="2" ry="2" fill="#F1F1F1" stroke="#181818" stroke-width="1.0"/>
+<circle cx="117.5" cy="80.0" r="9" fill="#B4A7E5" stroke="#181818" stroke-width="1.0"/>
+<text x="117.5" y="84.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" fill="#000000" font-weight="bold">I</text>
+<text x="178.0" y="72.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#000000" font-style="italic">«interface»</text>
+<text x="130.5" y="88.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#000000">ITrackingControl</text>
+<line x1="30.0" y1="94.0" x2="304.0" y2="94.0" stroke="#181818" stroke-width="1.0"/>
+<line x1="30.0" y1="100.0" x2="304.0" y2="100.0" stroke="#181818" stroke-width="1.0"/>
+<text x="38.0" y="114.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+isTrackingReliable(sessionId: String): boolean</text>
+<text x="38.0" y="129.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+pauseCounting(sessionId: String): void</text>
+<text x="38.0" y="145.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+resumeCounting(sessionId: String): void</text>
+<rect x="470.0" y="60.0" width="376.0" height="170.0" rx="2" ry="2" fill="#F1F1F1" stroke="#181818" stroke-width="1.0"/>
+<circle cx="606.5" cy="80.0" r="9" fill="#ADD1B2" stroke="#181818" stroke-width="1.0"/>
+<text x="606.5" y="84.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" fill="#000000" font-weight="bold">C</text>
+<text x="669.0" y="72.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#000000" font-style="italic">«control»</text>
+<text x="619.5" y="88.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#000000">SessionLifecycle</text>
+<line x1="470.0" y1="94.0" x2="846.0" y2="94.0" stroke="#181818" stroke-width="1.0"/>
+<text x="478.0" y="108.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">-store: ISessionStore</text>
+<text x="478.0" y="123.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">-tracking: ITrackingControl</text>
+<text x="478.0" y="139.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">-recoveryPolicy: RecoveryPolicy</text>
+<text x="478.0" y="154.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">-clock: Clock</text>
+<line x1="470.0" y1="162.0" x2="846.0" y2="162.0" stroke="#181818" stroke-width="1.0"/>
+<text x="478.0" y="176.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+startSession(sessionId: String): SessionStatus</text>
+<text x="478.0" y="191.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+onTrackingLost(sessionId: String, position: String): SessionStatus</text>
+<text x="478.0" y="207.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+confirmAssignments(sessionId: String): SessionStatus</text>
+<text x="478.0" y="222.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+reportDiscomfort(sessionId: String): SessionStatus</text>
+<rect x="1040.0" y="60.0" width="267.0" height="69.0" rx="2" ry="2" fill="#F1F1F1" stroke="#181818" stroke-width="1.0"/>
+<circle cx="1126.0" cy="73.0" r="9" fill="#ADD1B2" stroke="#181818" stroke-width="1.0"/>
+<text x="1126.0" y="77.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" fill="#000000" font-weight="bold">C</text>
+<text x="1139.0" y="78.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#000000">RecoveryPolicy</text>
+<line x1="1040.0" y1="86.0" x2="1307.0" y2="86.0" stroke="#181818" stroke-width="1.0"/>
+<line x1="1040.0" y1="92.0" x2="1307.0" y2="92.0" stroke="#181818" stroke-width="1.0"/>
+<text x="1048.0" y="106.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+shouldPause(s: ChallengeSession): boolean</text>
+<text x="1048.0" y="121.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+canResume(s, reliable, confirmed): boolean</text>
+<rect x="30.0" y="230.0" width="142.0" height="108.0" rx="2" ry="2" fill="#E4E4E4" stroke="#181818" stroke-width="1.0"/>
+<circle cx="57.5" cy="250.0" r="9" fill="#ADD1B2" stroke="#181818" stroke-width="1.0"/>
+<text x="57.5" y="254.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" fill="#000000" font-weight="bold">C</text>
+<text x="112.0" y="242.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#000000" font-style="italic">«adapter»</text>
+<text x="70.5" y="258.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#000000">TrackingClient</text>
+<line x1="30.0" y1="264.0" x2="172.0" y2="264.0" stroke="#181818" stroke-width="1.0"/>
+<text x="38.0" y="278.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">-baseUrl: String</text>
+<line x1="30.0" y1="285.5" x2="172.0" y2="285.5" stroke="#181818" stroke-width="1.0"/>
+<text x="38.0" y="299.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+isTrackingReliable(...)</text>
+<text x="38.0" y="315.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+pauseCounting(...)</text>
+<text x="38.0" y="330.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+resumeCounting(...)</text>
+<rect x="30.0" y="430.0" width="332.0" height="77.0" rx="2" ry="2" fill="#F1F1F1" stroke="#181818" stroke-width="1.0"/>
+<circle cx="153.0" cy="450.0" r="9" fill="#B4A7E5" stroke="#181818" stroke-width="1.0"/>
+<text x="153.0" y="454.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" fill="#000000" font-weight="bold">I</text>
+<text x="207.0" y="442.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#000000" font-style="italic">«interface»</text>
+<text x="166.0" y="458.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#000000">ISessionStore</text>
+<line x1="30.0" y1="464.0" x2="362.0" y2="464.0" stroke="#181818" stroke-width="1.0"/>
+<line x1="30.0" y1="470.0" x2="362.0" y2="470.0" stroke="#181818" stroke-width="1.0"/>
+<text x="38.0" y="484.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+findById(sessionId: String): Optional&lt;ChallengeSession&gt;</text>
+<text x="38.0" y="499.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+save(session: ChallengeSession): void</text>
+<rect x="30.0" y="590.0" width="196.0" height="92.5" rx="2" ry="2" fill="#E4E4E4" stroke="#181818" stroke-width="1.0"/>
+<circle cx="77.5" cy="610.0" r="9" fill="#ADD1B2" stroke="#181818" stroke-width="1.0"/>
+<text x="77.5" y="614.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" fill="#000000" font-weight="bold">C</text>
+<text x="139.0" y="602.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#000000" font-style="italic">«adapter»</text>
+<text x="90.5" y="618.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#000000">SqlSessionStore</text>
+<line x1="30.0" y1="624.0" x2="226.0" y2="624.0" stroke="#181818" stroke-width="1.0"/>
+<text x="38.0" y="638.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">-database = "gymarena_session"</text>
+<line x1="30.0" y1="645.5" x2="226.0" y2="645.5" stroke="#181818" stroke-width="1.0"/>
+<text x="38.0" y="659.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+findById(...)</text>
+<text x="38.0" y="675.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+save(...)</text>
+<rect x="560.0" y="330.0" width="401.0" height="263.0" rx="2" ry="2" fill="#F1F1F1" stroke="#181818" stroke-width="1.0"/>
+<circle cx="706.5" cy="350.0" r="9" fill="#ADD1B2" stroke="#181818" stroke-width="1.0"/>
+<text x="706.5" y="354.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" fill="#000000" font-weight="bold">C</text>
+<text x="771.5" y="342.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#000000" font-style="italic">«entity»</text>
+<text x="719.5" y="358.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#000000">ChallengeSession</text>
+<line x1="560.0" y1="364.0" x2="961.0" y2="364.0" stroke="#181818" stroke-width="1.0"/>
+<text x="568.0" y="378.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">-sessionId: String</text>
+<text x="568.0" y="393.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">-mode: SessionMode</text>
+<text x="568.0" y="409.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">-status: SessionStatus</text>
+<text x="568.0" y="424.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">-accumulatedActive: Duration</text>
+<text x="568.0" y="440.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">-activeSince: Instant</text>
+<line x1="560.0" y1="447.5" x2="961.0" y2="447.5" stroke="#181818" stroke-width="1.0"/>
+<text x="568.0" y="461.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+start(allPositionsReliable: boolean, now: Instant): void</text>
+<text x="568.0" y="477.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+addRepetition(memberId: String): void</text>
+<text x="568.0" y="492.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+pause(reason: InterruptionReason, position: String, now: Instant): void</text>
+<text x="568.0" y="508.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+resume(reliable: boolean, confirmed: boolean, now: Instant): void</text>
+<text x="568.0" y="523.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+complete(now: Instant): void</text>
+<text x="568.0" y="539.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+stopForDiscomfort(now: Instant): void</text>
+<text x="568.0" y="554.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+closeIncomplete(): void</text>
+<text x="568.0" y="570.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+activeTime(now: Instant): Duration</text>
+<text x="568.0" y="585.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+allTargetsReached(): boolean</text>
+<rect x="1180.0" y="330.0" width="118.0" height="154.5" rx="2" ry="2" fill="#F1F1F1" stroke="#181818" stroke-width="1.0"/>
+<circle cx="1194.5" cy="350.0" r="9" fill="#EB937F" stroke="#181818" stroke-width="1.0"/>
+<text x="1194.5" y="354.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" fill="#000000" font-weight="bold">E</text>
+<text x="1250.0" y="342.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#000000" font-style="italic">«enumeration»</text>
+<text x="1207.5" y="358.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#000000">SessionStatus</text>
+<line x1="1180.0" y1="364.0" x2="1298.0" y2="364.0" stroke="#181818" stroke-width="1.0"/>
+<text x="1188.0" y="378.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">CREATED</text>
+<text x="1188.0" y="393.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">ACTIVE</text>
+<text x="1188.0" y="409.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">PAUSED</text>
+<text x="1188.0" y="424.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">COMPLETED</text>
+<text x="1188.0" y="440.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">STOPPED</text>
+<text x="1188.0" y="455.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">INCOMPLETE</text>
+<line x1="1180.0" y1="463.0" x2="1298.0" y2="463.0" stroke="#181818" stroke-width="1.0"/>
+<text x="1188.0" y="477.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+isFinal(): boolean</text>
+<rect x="1180.0" y="560.0" width="109.0" height="77.0" rx="2" ry="2" fill="#F1F1F1" stroke="#181818" stroke-width="1.0"/>
+<circle cx="1193.0" cy="580.0" r="9" fill="#EB937F" stroke="#181818" stroke-width="1.0"/>
+<text x="1193.0" y="584.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" fill="#000000" font-weight="bold">E</text>
+<text x="1245.5" y="572.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#000000" font-style="italic">«enumeration»</text>
+<text x="1206.0" y="588.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#000000">SessionMode</text>
+<line x1="1180.0" y1="594.0" x2="1289.0" y2="594.0" stroke="#181818" stroke-width="1.0"/>
+<text x="1188.0" y="608.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">SOLO</text>
+<text x="1188.0" y="623.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">LOCAL_1V1</text>
+<line x1="1180.0" y1="631.0" x2="1289.0" y2="631.0" stroke="#181818" stroke-width="1.0"/>
+<rect x="300.0" y="740.0" width="151.0" height="100.0" rx="2" ry="2" fill="#F1F1F1" stroke="#181818" stroke-width="1.0"/>
+<circle cx="319.0" cy="753.0" r="9" fill="#ADD1B2" stroke="#181818" stroke-width="1.0"/>
+<text x="319.0" y="757.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" fill="#000000" font-weight="bold">C</text>
+<text x="332.0" y="758.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#000000">SessionParticipant</text>
+<line x1="300.0" y1="766.0" x2="451.0" y2="766.0" stroke="#181818" stroke-width="1.0"/>
+<text x="308.0" y="780.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">-memberId: String</text>
+<text x="308.0" y="795.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">-position: String</text>
+<text x="308.0" y="811.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">-acceptedRepetitions: int</text>
+<line x1="300.0" y1="818.5" x2="451.0" y2="818.5" stroke="#181818" stroke-width="1.0"/>
+<text x="308.0" y="832.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">~addRepetition(): void</text>
+<rect x="600.0" y="740.0" width="135.0" height="139.0" rx="2" ry="2" fill="#F1F1F1" stroke="#181818" stroke-width="1.0"/>
+<circle cx="625.0" cy="760.0" r="9" fill="#F3D37E" stroke="#181818" stroke-width="1.0"/>
+<text x="625.0" y="764.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" fill="#000000" font-weight="bold">R</text>
+<text x="678.5" y="752.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#000000" font-style="italic">«record»</text>
+<text x="638.0" y="768.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#000000">RuleSnapshot</text>
+<line x1="600.0" y1="774.0" x2="735.0" y2="774.0" stroke="#181818" stroke-width="1.0"/>
+<text x="608.0" y="788.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+exercise: String</text>
+<text x="608.0" y="803.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+level: int</text>
+<text x="608.0" y="819.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+targetRepetitions: int</text>
+<text x="608.0" y="834.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+timeLimit: Duration</text>
+<text x="608.0" y="850.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+ruleVersion: int</text>
+<text x="608.0" y="865.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+ranked: boolean</text>
+<line x1="600.0" y1="873.0" x2="735.0" y2="873.0" stroke="#181818" stroke-width="1.0"/>
+<rect x="860.0" y="740.0" width="172.0" height="92.5" rx="2" ry="2" fill="#F1F1F1" stroke="#181818" stroke-width="1.0"/>
+<circle cx="888.0" cy="760.0" r="9" fill="#F3D37E" stroke="#181818" stroke-width="1.0"/>
+<text x="888.0" y="764.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" fill="#000000" font-weight="bold">R</text>
+<text x="957.0" y="752.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#000000" font-style="italic">«record»</text>
+<text x="901.0" y="768.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#000000">SessionInterruption</text>
+<line x1="860.0" y1="774.0" x2="1032.0" y2="774.0" stroke="#181818" stroke-width="1.0"/>
+<text x="868.0" y="788.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+reason: InterruptionReason</text>
+<text x="868.0" y="803.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+position: String</text>
+<text x="868.0" y="819.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+at: Instant</text>
+<line x1="860.0" y1="826.5" x2="1032.0" y2="826.5" stroke="#181818" stroke-width="1.0"/>
+<rect x="1140.0" y="740.0" width="192.0" height="92.5" rx="2" ry="2" fill="#F1F1F1" stroke="#181818" stroke-width="1.0"/>
+<circle cx="1179.5" cy="760.0" r="9" fill="#EB937F" stroke="#181818" stroke-width="1.0"/>
+<text x="1179.5" y="764.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" fill="#000000" font-weight="bold">E</text>
+<text x="1247.0" y="752.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#000000" font-style="italic">«enumeration»</text>
+<text x="1192.5" y="768.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#000000">InterruptionReason</text>
+<line x1="1140.0" y1="774.0" x2="1332.0" y2="774.0" stroke="#181818" stroke-width="1.0"/>
+<text x="1148.0" y="788.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">TRACKING_LOST</text>
+<text x="1148.0" y="803.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">POSITION_SWAP_UNCERTAIN</text>
+<text x="1148.0" y="819.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">DISCOMFORT</text>
+<line x1="1140.0" y1="826.5" x2="1332.0" y2="826.5" stroke="#181818" stroke-width="1.0"/>
+<polyline points="470.0,106.2 304.0,106.2" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polyline points="314.0,101.8 304.0,106.2 314.0,110.8" fill="none" stroke="#181818" stroke-width="1.0"/>
+<text x="312.0" y="100.2" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">tracking</text>
+<text x="312.0" y="121.2" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">1</text>
+<polyline points="846.0,94.5 1040.0,94.5" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polyline points="1030.0,99.0 1040.0,94.5 1030.0,90.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<text x="852.0" y="88.5" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">recoveryPolicy</text>
+<text x="1026.0" y="109.5" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">1</text>
+<polyline points="510.0,230.0 510.0,455.0 362.0,455.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polyline points="372.0,450.5 362.0,455.0 372.0,459.5" fill="none" stroke="#181818" stroke-width="1.0"/>
+<text x="516.0" y="260.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">store</text>
+<text x="368.0" y="450.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">1</text>
+<polyline points="680.0,230.0 680.0,330.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polyline points="675.5,320.0 680.0,330.0 684.5,320.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<text x="686.0" y="318.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">manages</text>
+<line x1="362.0" y1="497.0" x2="560.0" y2="497.0" stroke="#181818" stroke-width="1.0"/>
+<text x="370.0" y="492.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">stores</text>
+<text x="532.0" y="492.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">0..*</text>
+<polyline points="1080.0,129.0 1080.0,370.0 961.0,370.0" fill="none" stroke="#181818" stroke-width="1.0" stroke-dasharray="6,4"/>
+<polyline points="971.0,365.5 961.0,370.0 971.0,374.5" fill="none" stroke="#181818" stroke-width="1.0"/>
+<text x="1086.0" y="159.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">«use»</text>
+<polyline points="90.0,230.0 90.0,152.5" fill="none" stroke="#181818" stroke-width="1.0" stroke-dasharray="6,4"/>
+<polygon points="90.0,152.5 96.6,164.5 83.4,164.5" fill="#FFFFFF" stroke="#181818" stroke-width="1.0"/>
+<polyline points="90.0,590.0 90.0,507.0" fill="none" stroke="#181818" stroke-width="1.0" stroke-dasharray="6,4"/>
+<polygon points="90.0,507.0 96.6,519.0 83.4,519.0" fill="#FFFFFF" stroke="#181818" stroke-width="1.0"/>
+<polyline points="961.0,390.0 1180.0,390.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polyline points="1170.0,394.5 1180.0,390.0 1170.0,385.5" fill="none" stroke="#181818" stroke-width="1.0"/>
+<text x="969.0" y="384.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">-status</text>
+<text x="1166.0" y="405.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">1</text>
+<polyline points="961.0,598.5 1180.0,598.5" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polyline points="1170.0,603.0 1180.0,598.5 1170.0,594.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<text x="969.0" y="592.5" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">-mode</text>
+<text x="1166.0" y="613.5" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">1</text>
+<polyline points="590.0,593.0 590.0,700.0 375.5,700.0 375.5,740.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polyline points="371.0,730.0 375.5,740.0 380.0,730.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polygon points="590.0,593.0 594.5,603.0 590.0,613.0 585.5,603.0" fill="#181818" stroke="#181818" stroke-width="1.0"/>
+<text x="381.5" y="732.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">1..2</text>
+<text x="381.5" y="694.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">participants</text>
+<polyline points="677.5,593.0 677.5,740.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polyline points="673.0,730.0 677.5,740.0 682.0,730.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polygon points="677.5,593.0 682.0,603.0 677.5,613.0 673.0,603.0" fill="#181818" stroke="#181818" stroke-width="1.0"/>
+<text x="683.5" y="732.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">1</text>
+<text x="683.5" y="623.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">rules</text>
+<polyline points="931.0,593.0 931.0,700.0 946.0,700.0 946.0,740.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polyline points="941.5,730.0 946.0,740.0 950.5,730.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polygon points="931.0,593.0 935.5,603.0 931.0,613.0 926.5,603.0" fill="#181818" stroke="#181818" stroke-width="1.0"/>
+<text x="952.0" y="732.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">0..*</text>
+<text x="952.0" y="694.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">interruptions</text>
+<polyline points="1032.0,790.0 1140.0,790.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polyline points="1130.0,794.5 1140.0,790.0 1130.0,785.5" fill="none" stroke="#181818" stroke-width="1.0"/>
+<text x="1038.0" y="784.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">reason</text>
+<text x="1126.0" y="805.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">1</text>
+<polygon points="30.0,900.0 495.0,900.0 505.0,910.0 505.0,944.0 30.0,944.0" fill="#FEFFDD" stroke="#181818" stroke-width="1.0"/>
+<polyline points="495.0,900.0 495.0,910.0 505.0,910.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<text x="40.0" y="918.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">«adapter» (grey) = realized in services/session-service (Python) and replaced by a</text>
+<text x="40.0" y="934.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">Mockito mock in SessionLifecycleTest. Other classes: domain-java/.../session/</text>
+</svg>

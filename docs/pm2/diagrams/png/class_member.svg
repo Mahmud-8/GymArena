@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1350" height="860" viewBox="0 0 1350 860">
+<rect x="0" y="0" width="1350" height="860" fill="#FFFFFF"/>
+<text x="675.0" y="24.0" font-family="Arial, Helvetica, sans-serif" font-size="14" text-anchor="middle" fill="#000000" font-weight="bold">Member Management - Updated Class Diagram (owner: Mohamed Soliman)</text>
+<rect x="30.0" y="60.0" width="314.0" height="61.5" rx="2" ry="2" fill="#F1F1F1" stroke="#181818" stroke-width="1.0"/>
+<circle cx="144.0" cy="80.0" r="9" fill="#B4A7E5" stroke="#181818" stroke-width="1.0"/>
+<text x="144.0" y="84.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" fill="#000000" font-weight="bold">I</text>
+<text x="198.0" y="72.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#000000" font-style="italic">«interface»</text>
+<text x="157.0" y="88.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#000000">IMemberStore</text>
+<line x1="30.0" y1="94.0" x2="344.0" y2="94.0" stroke="#181818" stroke-width="1.0"/>
+<line x1="30.0" y1="100.0" x2="344.0" y2="100.0" stroke="#181818" stroke-width="1.0"/>
+<text x="38.0" y="114.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+findById(memberId: String): Optional&lt;MemberProfile&gt;</text>
+<rect x="450.0" y="60.0" width="398.0" height="154.5" rx="2" ry="2" fill="#F1F1F1" stroke="#181818" stroke-width="1.0"/>
+<circle cx="585.5" cy="80.0" r="9" fill="#ADD1B2" stroke="#181818" stroke-width="1.0"/>
+<text x="585.5" y="84.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" fill="#000000" font-weight="bold">C</text>
+<text x="660.0" y="72.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#000000" font-style="italic">«control»</text>
+<text x="598.5" y="88.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#000000">MeasurementService</text>
+<line x1="450.0" y1="94.0" x2="848.0" y2="94.0" stroke="#181818" stroke-width="1.0"/>
+<text x="458.0" y="108.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">-memberStore: IMemberStore</text>
+<text x="458.0" y="123.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">-measurementStore: IMeasurementStore</text>
+<text x="458.0" y="139.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">-scale: IScaleSource</text>
+<text x="458.0" y="154.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">-clock: Clock</text>
+<line x1="450.0" y1="162.0" x2="848.0" y2="162.0" stroke="#181818" stroke-width="1.0"/>
+<text x="458.0" y="176.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+captureReading(memberId: String): WeightReading</text>
+<text x="458.0" y="191.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+confirmReading(readingId: String, memberId: String): WeightReading</text>
+<text x="458.0" y="207.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+rejectReading(readingId: String): WeightReading</text>
+<rect x="1040.0" y="60.0" width="213.0" height="61.5" rx="2" ry="2" fill="#F1F1F1" stroke="#181818" stroke-width="1.0"/>
+<circle cx="1105.5" cy="80.0" r="9" fill="#B4A7E5" stroke="#181818" stroke-width="1.0"/>
+<text x="1105.5" y="84.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" fill="#000000" font-weight="bold">I</text>
+<text x="1157.5" y="72.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#000000" font-style="italic">«interface»</text>
+<text x="1118.5" y="88.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#000000">IScaleSource</text>
+<line x1="1040.0" y1="94.0" x2="1253.0" y2="94.0" stroke="#181818" stroke-width="1.0"/>
+<line x1="1040.0" y1="100.0" x2="1253.0" y2="100.0" stroke="#181818" stroke-width="1.0"/>
+<text x="1048.0" y="114.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+readStableWeight(): ScaleReading</text>
+<rect x="1040.0" y="200.0" width="213.0" height="77.0" rx="2" ry="2" fill="#E4E4E4" stroke="#181818" stroke-width="1.0"/>
+<circle cx="1089.0" cy="220.0" r="9" fill="#ADD1B2" stroke="#181818" stroke-width="1.0"/>
+<text x="1089.0" y="224.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" fill="#000000" font-weight="bold">C</text>
+<text x="1157.5" y="212.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#000000" font-style="italic">«adapter»</text>
+<text x="1102.0" y="228.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#000000">SerialScaleAdapter</text>
+<line x1="1040.0" y1="234.0" x2="1253.0" y2="234.0" stroke="#181818" stroke-width="1.0"/>
+<text x="1048.0" y="248.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">-port: String</text>
+<line x1="1040.0" y1="255.5" x2="1253.0" y2="255.5" stroke="#181818" stroke-width="1.0"/>
+<text x="1048.0" y="269.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+readStableWeight(): ScaleReading</text>
+<rect x="30.0" y="270.0" width="316.0" height="92.5" rx="2" ry="2" fill="#F1F1F1" stroke="#181818" stroke-width="1.0"/>
+<circle cx="129.0" cy="290.0" r="9" fill="#B4A7E5" stroke="#181818" stroke-width="1.0"/>
+<text x="129.0" y="294.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" fill="#000000" font-weight="bold">I</text>
+<text x="199.0" y="282.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#000000" font-style="italic">«interface»</text>
+<text x="142.0" y="298.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#000000">IMeasurementStore</text>
+<line x1="30.0" y1="304.0" x2="346.0" y2="304.0" stroke="#181818" stroke-width="1.0"/>
+<line x1="30.0" y1="310.0" x2="346.0" y2="310.0" stroke="#181818" stroke-width="1.0"/>
+<text x="38.0" y="324.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+nextReadingId(): String</text>
+<text x="38.0" y="339.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+findById(readingId: String): Optional&lt;WeightReading&gt;</text>
+<text x="38.0" y="355.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+save(reading: WeightReading): void</text>
+<rect x="30.0" y="470.0" width="199.0" height="123.5" rx="2" ry="2" fill="#E4E4E4" stroke="#181818" stroke-width="1.0"/>
+<circle cx="79.0" cy="490.0" r="9" fill="#ADD1B2" stroke="#181818" stroke-width="1.0"/>
+<text x="79.0" y="494.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" fill="#000000" font-weight="bold">C</text>
+<text x="140.5" y="482.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#000000" font-style="italic">«adapter»</text>
+<text x="92.0" y="498.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#000000">SqlMemberStore</text>
+<line x1="30.0" y1="504.0" x2="229.0" y2="504.0" stroke="#181818" stroke-width="1.0"/>
+<text x="38.0" y="518.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">-database = "gymarena_member"</text>
+<line x1="30.0" y1="525.5" x2="229.0" y2="525.5" stroke="#181818" stroke-width="1.0"/>
+<text x="38.0" y="539.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+findById(memberId)</text>
+<text x="38.0" y="555.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+nextReadingId()</text>
+<text x="38.0" y="570.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+findById(readingId)</text>
+<text x="38.0" y="586.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+save(reading)</text>
+<rect x="480.0" y="340.0" width="331.0" height="185.5" rx="2" ry="2" fill="#F1F1F1" stroke="#181818" stroke-width="1.0"/>
+<circle cx="600.0" cy="360.0" r="9" fill="#ADD1B2" stroke="#181818" stroke-width="1.0"/>
+<text x="600.0" y="364.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" fill="#000000" font-weight="bold">C</text>
+<text x="656.5" y="352.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#000000" font-style="italic">«entity»</text>
+<text x="613.0" y="368.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#000000">WeightReading</text>
+<line x1="480.0" y1="374.0" x2="811.0" y2="374.0" stroke="#181818" stroke-width="1.0"/>
+<text x="488.0" y="388.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">-readingId: String</text>
+<text x="488.0" y="403.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">-memberId: String</text>
+<text x="488.0" y="419.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">-weightKg: double</text>
+<text x="488.0" y="434.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">-readAt: Instant</text>
+<text x="488.0" y="450.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">-status: ReadingStatus</text>
+<text x="488.0" y="465.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">-confirmedAt: Instant</text>
+<line x1="480.0" y1="473.0" x2="811.0" y2="473.0" stroke="#181818" stroke-width="1.0"/>
+<text x="488.0" y="487.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+capture(readingId, member, raw): WeightReading {static}</text>
+<text x="488.0" y="502.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+confirm(confirmingMemberId: String, now: Instant): void</text>
+<text x="488.0" y="518.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+reject(): void</text>
+<rect x="1040.0" y="380.0" width="119.0" height="108.0" rx="2" ry="2" fill="#F1F1F1" stroke="#181818" stroke-width="1.0"/>
+<circle cx="1057.5" cy="400.0" r="9" fill="#F3D37E" stroke="#181818" stroke-width="1.0"/>
+<text x="1057.5" y="404.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" fill="#000000" font-weight="bold">R</text>
+<text x="1110.5" y="392.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#000000" font-style="italic">«record»</text>
+<text x="1070.5" y="408.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#000000">ScaleReading</text>
+<line x1="1040.0" y1="414.0" x2="1159.0" y2="414.0" stroke="#181818" stroke-width="1.0"/>
+<text x="1048.0" y="428.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+weightKg: double</text>
+<text x="1048.0" y="443.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+stable: boolean</text>
+<text x="1048.0" y="459.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+readAt: Instant</text>
+<line x1="1040.0" y1="466.5" x2="1159.0" y2="466.5" stroke="#181818" stroke-width="1.0"/>
+<text x="1048.0" y="480.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+isValid(): boolean</text>
+<rect x="480.0" y="660.0" width="170.0" height="92.5" rx="2" ry="2" fill="#F1F1F1" stroke="#181818" stroke-width="1.0"/>
+<circle cx="520.5" cy="680.0" r="9" fill="#EB937F" stroke="#181818" stroke-width="1.0"/>
+<text x="520.5" y="684.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" fill="#000000" font-weight="bold">E</text>
+<text x="576.0" y="672.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#000000" font-style="italic">«enumeration»</text>
+<text x="533.5" y="688.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#000000">ReadingStatus</text>
+<line x1="480.0" y1="694.0" x2="650.0" y2="694.0" stroke="#181818" stroke-width="1.0"/>
+<text x="488.0" y="708.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">PENDING_CONFIRMATION</text>
+<text x="488.0" y="723.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">CONFIRMED</text>
+<text x="488.0" y="739.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">DISCARDED</text>
+<line x1="480.0" y1="746.5" x2="650.0" y2="746.5" stroke="#181818" stroke-width="1.0"/>
+<rect x="770.0" y="640.0" width="136.0" height="108.0" rx="2" ry="2" fill="#F1F1F1" stroke="#181818" stroke-width="1.0"/>
+<circle cx="794.0" cy="660.0" r="9" fill="#F3D37E" stroke="#181818" stroke-width="1.0"/>
+<text x="794.0" y="664.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" fill="#000000" font-weight="bold">R</text>
+<text x="849.0" y="652.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#000000" font-style="italic">«record»</text>
+<text x="807.0" y="668.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#000000">MemberProfile</text>
+<line x1="770.0" y1="674.0" x2="906.0" y2="674.0" stroke="#181818" stroke-width="1.0"/>
+<text x="778.0" y="688.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+memberId: String</text>
+<text x="778.0" y="703.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+name: String</text>
+<text x="778.0" y="719.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+age: int</text>
+<text x="778.0" y="734.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">+memberCode: String</text>
+<line x1="770.0" y1="742.0" x2="906.0" y2="742.0" stroke="#181818" stroke-width="1.0"/>
+<rect x="1040.0" y="640.0" width="206.0" height="46.0" rx="2" ry="2" fill="#F1F1F1" stroke="#181818" stroke-width="1.0"/>
+<circle cx="1053.0" cy="660.0" r="9" fill="#ADD1B2" stroke="#181818" stroke-width="1.0"/>
+<text x="1053.0" y="664.5" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" fill="#000000" font-weight="bold">C</text>
+<text x="1154.0" y="652.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#000000" font-style="italic">«exception»</text>
+<text x="1066.0" y="668.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#000000">InvalidScaleReadingException</text>
+<line x1="1040.0" y1="674.0" x2="1246.0" y2="674.0" stroke="#181818" stroke-width="1.0"/>
+<line x1="1040.0" y1="680.0" x2="1246.0" y2="680.0" stroke="#181818" stroke-width="1.0"/>
+<polyline points="450.0,90.8 344.0,90.8" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polyline points="354.0,86.2 344.0,90.8 354.0,95.2" fill="none" stroke="#181818" stroke-width="1.0"/>
+<text x="352.0" y="84.8" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">memberStore</text>
+<text x="352.0" y="105.8" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">1</text>
+<polyline points="848.0,90.8 1040.0,90.8" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polyline points="1030.0,95.2 1040.0,90.8 1030.0,86.2" fill="none" stroke="#181818" stroke-width="1.0"/>
+<text x="856.0" y="84.8" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">scale</text>
+<text x="1026.0" y="105.8" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">1</text>
+<polyline points="480.0,214.5 480.0,295.0 346.0,295.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polyline points="356.0,290.5 346.0,295.0 356.0,299.5" fill="none" stroke="#181818" stroke-width="1.0"/>
+<text x="486.0" y="244.5" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">measurementStore</text>
+<text x="352.0" y="290.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">1</text>
+<polyline points="645.5,214.5 645.5,340.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polyline points="641.0,330.0 645.5,340.0 650.0,330.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<text x="651.5" y="328.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">creates / confirms</text>
+<line x1="346.0" y1="352.5" x2="480.0" y2="352.5" stroke="#181818" stroke-width="1.0"/>
+<text x="354.0" y="347.5" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">stores</text>
+<text x="452.0" y="347.5" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">0..*</text>
+<polyline points="1100.0,200.0 1100.0,121.5" fill="none" stroke="#181818" stroke-width="1.0" stroke-dasharray="6,4"/>
+<polygon points="1100.0,121.5 1106.6,133.5 1093.4,133.5" fill="#FFFFFF" stroke="#181818" stroke-width="1.0"/>
+<polyline points="90.0,470.0 90.0,362.5" fill="none" stroke="#181818" stroke-width="1.0" stroke-dasharray="6,4"/>
+<polygon points="90.0,362.5 96.6,374.5 83.4,374.5" fill="#FFFFFF" stroke="#181818" stroke-width="1.0"/>
+<polyline points="30.0,500.0 15.0,500.0 15.0,90.8 30.0,90.8" fill="none" stroke="#181818" stroke-width="1.0" stroke-dasharray="6,4"/>
+<polygon points="30.0,90.8 18.0,97.3 18.0,84.2" fill="#FFFFFF" stroke="#181818" stroke-width="1.0"/>
+<polyline points="811.0,430.0 1040.0,430.0" fill="none" stroke="#181818" stroke-width="1.0" stroke-dasharray="6,4"/>
+<polyline points="1030.0,434.5 1040.0,430.0 1030.0,425.5" fill="none" stroke="#181818" stroke-width="1.0"/>
+<text x="819.0" y="424.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">«use»</text>
+<polyline points="540.0,525.5 540.0,660.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<polyline points="535.5,650.0 540.0,660.0 544.5,650.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<text x="546.0" y="547.5" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">-status</text>
+<text x="546.0" y="654.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">1</text>
+<polyline points="771.0,525.5 771.0,610.0 830.0,610.0 830.0,640.0" fill="none" stroke="#181818" stroke-width="1.0" stroke-dasharray="6,4"/>
+<polyline points="825.5,630.0 830.0,640.0 834.5,630.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<text x="836.0" y="604.0" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">«use»</text>
+<polyline points="811.0,495.5 1100.0,495.5 1100.0,640.0" fill="none" stroke="#181818" stroke-width="1.0" stroke-dasharray="6,4"/>
+<polyline points="1095.5,630.0 1100.0,640.0 1104.5,630.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<text x="1106.0" y="535.5" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" fill="#000000">«throws»</text>
+<polygon points="30.0,800.0 498.0,800.0 508.0,810.0 508.0,844.0 30.0,844.0" fill="#FEFFDD" stroke="#181818" stroke-width="1.0"/>
+<polyline points="498.0,800.0 498.0,810.0 508.0,810.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<text x="40.0" y="818.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">«adapter» (grey) = realized in services/member-service (Python) and replaced by a</text>
+<text x="40.0" y="834.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">Mockito mock in MeasurementServiceTest. Other classes: domain-java/.../member/</text>
+</svg>

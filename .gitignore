@@ -25,3 +25,10 @@ captures/
 *.task
 *.db
 *.sqlite*
+
+# Java domain module build output
+domain-java/target/
+
+# Local CI secrets and machine-specific certificates
+infra/ci/.env
+infra/ci/jenkins/certs/*.crt

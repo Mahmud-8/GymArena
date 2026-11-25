@@ -23,14 +23,14 @@ docker compose ps
 
 | Service | Local address | Owned database |
 | --- | --- | --- |
-| Exercise Tracking | http://localhost:8101 | gymarena_tracking |
-| Membership | http://localhost:8102 | gymarena_membership |
-| Session Control | http://localhost:8103 | gymarena_session |
-| Notifications | http://localhost:8104 | gymarena_notification |
-| Member Profiles and Measurements | http://localhost:8105 | gymarena_member |
-| Face Recognition | http://localhost:8106 | gymarena_recognition |
-| Assessment and Challenges | http://localhost:8107 | gymarena_challenge |
-| Scoring and Leaderboards | http://localhost:8108 | gymarena_scoring |
+| Exercise Tracking Management | http://localhost:8101 | gymarena_tracking |
+| Membership Management | http://localhost:8102 | gymarena_membership |
+| Session Management | http://localhost:8103 | gymarena_session |
+| Notification Management | http://localhost:8104 | gymarena_notification |
+| Member Management | http://localhost:8105 | gymarena_member |
+| Face Recognition Management | http://localhost:8106 | gymarena_recognition |
+| Challenge Management | http://localhost:8107 | gymarena_challenge |
+| Score Management | http://localhost:8108 | gymarena_scoring |
 
 Each address exposes service metadata at `/`, process health at `/health/live`, database readiness at `/health/ready`, and API documentation at `/docs`. Readiness requires the service's expected tables and views. It returns HTTP 503 when that owned database is unavailable or incomplete. Database faults leave liveness separate, allowing recovery without pretending the service is ready.
 

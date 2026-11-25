@@ -1,4 +1,4 @@
-# Face Recognition
+# Face Recognition Management
 
 Owner: Mohamed Soliman ([@xchan404](https://github.com/xchan404))
 

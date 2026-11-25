@@ -2,7 +2,7 @@
   {
     "id": "tracking",
     "folder": "exercise-tracking-service",
-    "name": "Exercise Tracking",
+    "name": "Exercise Tracking Management",
     "owner": "Mahmoud Emad",
     "interface": "IExerciseTracking",
     "requirements": "FR-01, FR-02",
@@ -23,7 +23,7 @@
   {
     "id": "membership",
     "folder": "membership-service",
-    "name": "Membership",
+    "name": "Membership Management",
     "owner": "Mahmoud Emad",
     "interface": "IMembership",
     "requirements": "FR-03, FR-04",
@@ -45,7 +45,7 @@
   {
     "id": "session",
     "folder": "session-service",
-    "name": "Session Control",
+    "name": "Session Management",
     "owner": "Ahmed Ebrahim",
     "interface": "ISessionControl",
     "requirements": "FR-05, FR-06",
@@ -71,7 +71,7 @@
   {
     "id": "notification",
     "folder": "notification-service",
-    "name": "Notifications",
+    "name": "Notification Management",
     "owner": "Ahmed Ebrahim",
     "interface": "INotifications",
     "requirements": "FR-07, FR-08",
@@ -99,7 +99,7 @@
   {
     "id": "member",
     "folder": "member-service",
-    "name": "Member Profiles and Measurements",
+    "name": "Member Management",
     "owner": "Mohamed Soliman",
     "interface": "IMemberProfile",
     "requirements": "FR-09, FR-10",
@@ -121,7 +121,7 @@
   {
     "id": "recognition",
     "folder": "recognition-service",
-    "name": "Face Recognition",
+    "name": "Face Recognition Management",
     "owner": "Mohamed Soliman",
     "interface": "IRecognition",
     "requirements": "FR-11, FR-12",
@@ -144,7 +144,7 @@
   {
     "id": "challenge",
     "folder": "challenge-service",
-    "name": "Assessment and Challenges",
+    "name": "Challenge Management",
     "owner": "Mohamed Hegazy",
     "interface": "IChallenge",
     "requirements": "FR-13, FR-14",
@@ -168,7 +168,7 @@
   {
     "id": "scoring",
     "folder": "scoring-service",
-    "name": "Scoring and Leaderboards",
+    "name": "Score Management",
     "owner": "Mohamed Hegazy",
     "interface": "IScoring",
     "requirements": "FR-15, FR-16",

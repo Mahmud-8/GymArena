@@ -1,4 +1,4 @@
-# Member Profiles and Measurements
+# Member Management
 
 Owner: Mohamed Soliman ([@xchan404](https://github.com/xchan404))
 

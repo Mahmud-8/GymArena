@@ -1,0 +1,64 @@
+jenkins:
+  systemMessage: "GymArena PM2 - domain unit tests, coverage and SonarQube quality gate"
+  numExecutors: 2
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: "admin"
+          password: "${JENKINS_ADMIN_PASSWORD}"
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: true
+
+credentials:
+  system:
+    domainCredentials:
+      - credentials:
+          - string:
+              scope: GLOBAL
+              id: "sonar-token"
+              description: "SonarQube analysis token"
+              secret: "${SONAR_TOKEN}"
+
+unclassified:
+  location:
+    url: "http://localhost:8090/"
+  sonarGlobalConfiguration:
+    buildWrapperEnabled: true
+    installations:
+      - name: "SonarQube"
+        serverUrl: "http://sonarqube:9000"
+        credentialsId: "sonar-token"
+
+tool:
+  jdk:
+    installations:
+      - name: "jdk21"
+        home: "/opt/java/openjdk"
+  maven:
+    installations:
+      - name: "maven3"
+        properties:
+          - installSource:
+              installers:
+                - maven:
+                    id: "3.9.9"
+
+jobs:
+  - script: |
+      pipelineJob('gymarena-domain') {
+        description('GymArena domain-java: JUnit/Mockito tests, JaCoCo gate, SonarQube quality gate')
+        definition {
+          cpsScm {
+            scm {
+              git {
+                remote { url('https://github.com/Mahmud-8/GymArena.git') }
+                branch('*/feature/pm2-design-devops')
+              }
+            }
+            scriptPath('Jenkinsfile')
+            lightweight(false)
+          }
+        }
+      }

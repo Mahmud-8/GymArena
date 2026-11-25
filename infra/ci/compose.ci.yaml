@@ -1,0 +1,37 @@
+# Local SonarQube and Jenkins for the PM2 DevOps review.
+# 1. docker compose -f infra/ci/compose.ci.yaml up -d sonarqube
+# 2. create the SonarQube token, write SONAR_TOKEN and JENKINS_ADMIN_PASSWORD to infra/ci/.env
+# 3. docker compose -f infra/ci/compose.ci.yaml up -d --build jenkins   (infra/ci/.env is read automatically)
+# SonarQube: http://localhost:9000   Jenkins: http://localhost:8090 (job: gymarena-domain; host port 8090 avoids clashes with other local apps)
+name: gymarena-ci
+
+services:
+  sonarqube:
+    image: sonarqube:10.7-community
+    ports:
+      - "9000:9000"
+    environment:
+      SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: "true"
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_logs:/opt/sonarqube/logs
+
+  jenkins:
+    build: ./jenkins
+    image: gymarena/jenkins-ci:local
+    ports:
+      - "8090:8080"
+    environment:
+      SONAR_TOKEN: ${SONAR_TOKEN:?set SONAR_TOKEN in infra/ci/.env}
+      JENKINS_ADMIN_PASSWORD: ${JENKINS_ADMIN_PASSWORD:?set JENKINS_ADMIN_PASSWORD in infra/ci/.env}
+    volumes:
+      - jenkins_home:/var/jenkins_home
+    depends_on:
+      - sonarqube
+
+volumes:
+  sonarqube_data:
+  sonarqube_extensions:
+  sonarqube_logs:
+  jenkins_home:

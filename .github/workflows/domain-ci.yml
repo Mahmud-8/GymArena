@@ -1,0 +1,86 @@
+name: GymArena Domain Unit Tests and Quality Gate
+
+on:
+  push:
+    branches: [main, develop, 'feature/**']
+    paths: ['domain-java/**', '.github/workflows/domain-ci.yml']
+  pull_request:
+    branches: [main, develop]
+    paths: ['domain-java/**', '.github/workflows/domain-ci.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: domain-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: JUnit, Mockito, JaCoCo and SonarQube
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: domain-java
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+    steps:
+      - name: Check out the tested revision
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          fetch-depth: 0            # full history for SonarQube blame and new-code detection
+          persist-credentials: false
+
+      - name: Select Temurin JDK 21 with the Maven cache
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - name: Build, run unit tests and enforce the JaCoCo coverage gate
+        run: mvn -B -ntp verify
+
+      - name: Publish the coverage summary
+        if: always()
+        run: |
+          python3 - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import csv, os
+          path = 'target/site/jacoco/jacoco.csv'
+          if not os.path.exists(path):
+              print('Coverage report was not produced.'); raise SystemExit
+          rows = list(csv.DictReader(open(path)))
+          def pct(m, c):
+              t = sum(int(r[m]) + int(r[c]) for r in rows)
+              return 100 * sum(int(r[c]) for r in rows) / t if t else 0
+          print('### JaCoCo coverage')
+          print(f"Line coverage: {pct('LINE_MISSED', 'LINE_COVERED'):.1f}%  ")
+          print(f"Branch coverage: {pct('BRANCH_MISSED', 'BRANCH_COVERED'):.1f}%")
+          PY
+
+      - name: SonarQube analysis and quality gate
+        if: env.SONAR_TOKEN != '' && env.SONAR_HOST_URL != ''
+        run: >-
+          mvn -B -ntp sonar:sonar
+          -Dsonar.host.url="$SONAR_HOST_URL"
+          -Dsonar.token="$SONAR_TOKEN"
+          -Dsonar.qualitygate.wait=true
+          -Dsonar.qualitygate.timeout=300
+
+      - name: Report a skipped quality gate
+        if: env.SONAR_TOKEN == '' || env.SONAR_HOST_URL == ''
+        run: echo "::warning::SONAR_TOKEN or SONAR_HOST_URL is not configured; SonarQube analysis was skipped."
+
+      - name: Retain test and coverage reports
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: domain-test-reports-${{ github.sha }}
+          path: |
+            domain-java/target/surefire-reports/
+            domain-java/target/site/jacoco/
+          if-no-files-found: error
+          retention-days: 30

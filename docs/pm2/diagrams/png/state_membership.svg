@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1380" height="440" viewBox="0 0 1380 440">
+<rect x="0" y="0" width="1380" height="440" fill="#FFFFFF"/>
+<text x="690.0" y="24.0" font-family="Arial, Helvetica, sans-serif" font-size="14" text-anchor="middle" fill="#000000" font-weight="bold">Membership Management - State Diagram (main object: Membership)</text>
+<circle cx="50.0" cy="194.0" r="9" fill="#1F2937" stroke="#1F2937" stroke-width="1.0"/>
+<rect x="110.0" y="170.0" width="190.0" height="48.0" rx="14" ry="14" fill="#EEEDFC" stroke="#5B4BC4" stroke-width="2"/>
+<text x="205.0" y="199.5" font-family="Arial, Helvetica, sans-serif" font-size="15" text-anchor="middle" fill="#23205C" font-weight="bold">No Subscription</text>
+<rect x="640.0" y="170.0" width="170.0" height="48.0" rx="14" ry="14" fill="#EEEDFC" stroke="#5B4BC4" stroke-width="2"/>
+<text x="725.0" y="199.5" font-family="Arial, Helvetica, sans-serif" font-size="15" text-anchor="middle" fill="#23205C" font-weight="bold">Active</text>
+<rect x="1150.0" y="170.0" width="170.0" height="48.0" rx="14" ry="14" fill="#EEEDFC" stroke="#5B4BC4" stroke-width="2"/>
+<text x="1235.0" y="199.5" font-family="Arial, Helvetica, sans-serif" font-size="15" text-anchor="middle" fill="#23205C" font-weight="bold">Expired</text>
+<polyline points="59.0,194.0 110.0,194.0" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<polyline points="98.0,199.4 110.0,194.0 98.0,188.6" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<polyline points="300.0,194.0 640.0,194.0" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<polyline points="628.0,199.4 640.0,194.0 628.0,188.6" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<text x="312.0" y="172.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#1F2937">recordSubscription(start, expiry)</text>
+<text x="312.0" y="189.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#1F2937">[expiry &gt;= today]</text>
+<polyline points="810.0,194.0 1150.0,194.0" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<polyline points="1138.0,199.4 1150.0,194.0 1138.0,188.6" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<text x="824.0" y="172.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" fill="#1F2937">checkExpiry(today) [expiry &lt; today]</text>
+<polyline points="680.0,170.0 680.0,85.0 770.0,85.0 770.0,170.0" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<polyline points="764.6,158.0 770.0,170.0 775.4,158.0" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<text x="725.0" y="53.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="middle" fill="#1F2937">renew(revised) [revised &gt; expiry]</text>
+<text x="725.0" y="70.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="middle" fill="#C0392B">/ record = new RenewalRecord(...)</text>
+<polyline points="1235.0,218.0 1235.0,330.0 725.0,330.0 725.0,218.0" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<polyline points="730.4,230.0 725.0,218.0 719.6,230.0" fill="none" stroke="#1F2937" stroke-width="1.6"/>
+<text x="980.0" y="356.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="middle" fill="#1F2937">renew(revised) [revised &gt; expiry and revised &gt;= today]</text>
+<text x="980.0" y="373.0" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="middle" fill="#C0392B">/ record = new RenewalRecord(...)</text>
+<polygon points="40.0,300.0 302.0,300.0 312.0,310.0 312.0,392.0 40.0,392.0" fill="#FEFFDD" stroke="#181818" stroke-width="1.0"/>
+<polyline points="302.0,300.0 302.0,310.0 312.0,310.0" fill="none" stroke="#181818" stroke-width="1.0"/>
+<text x="50.0" y="318.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">Rejected events (IllegalStateException /</text>
+<text x="50.0" y="334.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">IllegalArgumentException), state unchanged:</text>
+<text x="50.0" y="350.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">- renew() in No Subscription</text>
+<text x="50.0" y="366.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">- recordSubscription() in Active or Expired</text>
+<text x="50.0" y="382.0" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" fill="#000000">- renew() with revised &lt;= current expiry</text>
+</svg>
