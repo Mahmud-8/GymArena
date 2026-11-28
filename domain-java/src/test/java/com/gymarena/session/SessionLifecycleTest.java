@@ -24,8 +24,8 @@ class SessionLifecycleTest {
     @Mock RecoveryPolicy recoveryPolicy; // :RecoveryPolicy
 
     @Test
-    @DisplayName("1: onTrackingLost sends 1.1 findById, 1.2 shouldPause, 1.4 pauseCounting, 1.5 save")
-    void trackingLostPausesSession() {
+    @DisplayName("TC-SES-01: 1: onTrackingLost sends 1.1 findById, 1.2 shouldPause, 1.4 pauseCounting, 1.5 save")
+    void TC_SES_01_trackingLostPausesSession() {
         ChallengeSession s1001 = activeSession();
         SessionLifecycle lifecycle = new SessionLifecycle(store, tracking, recoveryPolicy, clockAt(LOST_AT));
         when(store.findById(SESSION_ID)).thenReturn(Optional.of(s1001));
@@ -45,8 +45,8 @@ class SessionLifecycleTest {
     }
 
     @Test
-    @DisplayName("Tracking lost while already PAUSED: policy says no pause, nothing saved")
-    void trackingLostWhilePaused() {
+    @DisplayName("TC-SES-02: Tracking lost while already PAUSED: policy says no pause, nothing saved")
+    void TC_SES_02_trackingLostWhilePaused() {
         ChallengeSession s1001 = pausedSession();
         SessionLifecycle lifecycle = new SessionLifecycle(store, tracking, recoveryPolicy, clockAt(RESUMED_AT));
         when(store.findById(SESSION_ID)).thenReturn(Optional.of(s1001));
@@ -58,8 +58,8 @@ class SessionLifecycleTest {
     }
 
     @Test
-    @DisplayName("2: confirmAssignments sends 2.1 findById, 2.2 isTrackingReliable, 2.3 canResume, 2.5 resumeCounting, 2.6 save")
-    void confirmationResumesSession() {
+    @DisplayName("TC-SES-03: 2: confirmAssignments sends 2.1 findById, 2.2 isTrackingReliable, 2.3 canResume, 2.5 resumeCounting, 2.6 save")
+    void TC_SES_03_confirmationResumesSession() {
         ChallengeSession s1001 = pausedSession();
         SessionLifecycle lifecycle = new SessionLifecycle(store, tracking, recoveryPolicy, clockAt(RESUMED_AT));
         when(store.findById(SESSION_ID)).thenReturn(Optional.of(s1001));
@@ -78,8 +78,8 @@ class SessionLifecycleTest {
     }
 
     @Test
-    @DisplayName("Confirmation while tracking is still unreliable keeps the session PAUSED")
-    void confirmationWithUnreliableTracking() {
+    @DisplayName("TC-SES-04: Confirmation while tracking is still unreliable keeps the session PAUSED")
+    void TC_SES_04_confirmationWithUnreliableTracking() {
         ChallengeSession s1001 = pausedSession();
         SessionLifecycle lifecycle = new SessionLifecycle(store, tracking, recoveryPolicy, clockAt(RESUMED_AT));
         when(store.findById(SESSION_ID)).thenReturn(Optional.of(s1001));
@@ -92,8 +92,8 @@ class SessionLifecycleTest {
     }
 
     @Test
-    @DisplayName("startSession starts only with reliable tracking and saves the session")
-    void startSession() {
+    @DisplayName("TC-SES-05: startSession starts only with reliable tracking and saves the session")
+    void TC_SES_05_startSession() {
         ChallengeSession s1001 = createdSession();
         SessionLifecycle lifecycle = new SessionLifecycle(store, tracking, recoveryPolicy, clockAt(STARTED_AT));
         when(store.findById(SESSION_ID)).thenReturn(Optional.of(s1001));
@@ -104,8 +104,8 @@ class SessionLifecycleTest {
     }
 
     @Test
-    @DisplayName("reportDiscomfort stops counting and closes the session as STOPPED")
-    void reportDiscomfort() {
+    @DisplayName("TC-SES-06: reportDiscomfort stops counting and closes the session as STOPPED")
+    void TC_SES_06_reportDiscomfort() {
         ChallengeSession s1001 = activeSession();
         SessionLifecycle lifecycle = new SessionLifecycle(store, tracking, recoveryPolicy, clockAt(LOST_AT));
         when(store.findById(SESSION_ID)).thenReturn(Optional.of(s1001));
@@ -116,8 +116,8 @@ class SessionLifecycleTest {
     }
 
     @Test
-    @DisplayName("Unknown session id is rejected without calling tracking")
-    void unknownSession() {
+    @DisplayName("TC-SES-07: Unknown session id is rejected without calling tracking")
+    void TC_SES_07_unknownSession() {
         SessionLifecycle lifecycle = new SessionLifecycle(store, tracking, recoveryPolicy, clockAt(LOST_AT));
         when(store.findById("SES-404")).thenReturn(Optional.empty());
 
@@ -126,8 +126,8 @@ class SessionLifecycleTest {
     }
 
     @Test
-    @DisplayName("RecoveryPolicy decisions")
-    void recoveryPolicyRules() {
+    @DisplayName("TC-SES-08: RecoveryPolicy decisions")
+    void TC_SES_08_recoveryPolicyRules() {
         RecoveryPolicy policy = new RecoveryPolicy();
         assertTrue(policy.shouldPause(activeSession()));
         assertFalse(policy.shouldPause(pausedSession()));

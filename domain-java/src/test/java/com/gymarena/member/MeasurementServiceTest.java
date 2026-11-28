@@ -32,8 +32,8 @@ class MeasurementServiceTest {
     }
 
     @Test
-    @DisplayName("1: captureReading sends 1.1 findById, 1.2 readStableWeight, 1.3 nextReadingId, 1.5 save")
-    void captureStableReading() {
+    @DisplayName("TC-MEM-01: 1: captureReading sends 1.1 findById, 1.2 readStableWeight, 1.3 nextReadingId, 1.5 save")
+    void TC_MEM_01_captureStableReading() {
         when(memberStore.findById(MEMBER_ID)).thenReturn(Optional.of(omar()));
         when(scale.readStableWeight()).thenReturn(stableReading());
         when(measurementStore.nextReadingId()).thenReturn(READING_ID);
@@ -52,8 +52,8 @@ class MeasurementServiceTest {
     }
 
     @Test
-    @DisplayName("FR-10.4: unstable reading is reported and nothing is saved")
-    void unstableReadingNotSaved() {
+    @DisplayName("TC-MEM-02: FR-10.4: unstable reading is reported and nothing is saved")
+    void TC_MEM_02_unstableReadingNotSaved() {
         when(memberStore.findById(MEMBER_ID)).thenReturn(Optional.of(omar()));
         when(scale.readStableWeight()).thenReturn(new ScaleReading(78.9, false, READ_AT));
         when(measurementStore.nextReadingId()).thenReturn(READING_ID);
@@ -63,8 +63,8 @@ class MeasurementServiceTest {
     }
 
     @Test
-    @DisplayName("Unknown member: the scale is never read")
-    void unknownMember() {
+    @DisplayName("TC-MEM-03: Unknown member: the scale is never read")
+    void TC_MEM_03_unknownMember() {
         when(memberStore.findById("MBR-9999")).thenReturn(Optional.empty());
 
         assertThrows(IllegalArgumentException.class, () -> service.captureReading("MBR-9999"));
@@ -72,8 +72,8 @@ class MeasurementServiceTest {
     }
 
     @Test
-    @DisplayName("2: confirmReading sends 2.1 findById, 2.2 confirm, 2.3 save")
-    void confirmReading() {
+    @DisplayName("TC-MEM-04: 2: confirmReading sends 2.1 findById, 2.2 confirm, 2.3 save")
+    void TC_MEM_04_confirmReading() {
         WeightReading wr310 = pendingReading();
         when(measurementStore.findById(READING_ID)).thenReturn(Optional.of(wr310));
 
@@ -91,8 +91,8 @@ class MeasurementServiceTest {
     }
 
     @Test
-    @DisplayName("Confirmation by another member is refused and not saved")
-    void confirmByOtherMember() {
+    @DisplayName("TC-MEM-05: Confirmation by another member is refused and not saved")
+    void TC_MEM_05_confirmByOtherMember() {
         when(measurementStore.findById(READING_ID)).thenReturn(Optional.of(pendingReading()));
 
         assertThrows(IllegalArgumentException.class, () -> service.confirmReading(READING_ID, "MBR-0057"));
@@ -100,8 +100,8 @@ class MeasurementServiceTest {
     }
 
     @Test
-    @DisplayName("rejectReading discards the pending reading and saves it")
-    void rejectReading() {
+    @DisplayName("TC-MEM-06: rejectReading discards the pending reading and saves it")
+    void TC_MEM_06_rejectReading() {
         WeightReading wr310 = pendingReading();
         when(measurementStore.findById(READING_ID)).thenReturn(Optional.of(wr310));
 
@@ -110,14 +110,15 @@ class MeasurementServiceTest {
     }
 
     @Test
-    @DisplayName("Unknown reading id")
-    void unknownReading() {
+    @DisplayName("TC-MEM-07: Unknown reading id")
+    void TC_MEM_07_unknownReading() {
         when(measurementStore.findById("WR-404")).thenReturn(Optional.empty());
         assertThrows(IllegalArgumentException.class, () -> service.confirmReading("WR-404", MEMBER_ID));
     }
 
     @Test
-    void readingKeepsScaleTimestamp() {
+    @DisplayName("TC-MEM-08: Reading keeps the scale timestamp and member")
+    void TC_MEM_08_readingKeepsScaleTimestamp() {
         assertEquals(Instant.parse("2026-11-22T09:40:12Z"), pendingReading().getReadAt());
         assertEquals(MEMBER_ID, pendingReading().getMemberId());
     }

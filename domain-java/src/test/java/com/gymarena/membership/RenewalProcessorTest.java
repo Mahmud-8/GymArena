@@ -33,8 +33,8 @@ class RenewalProcessorTest {
     }
 
     @Test
-    @DisplayName("1: renew() sends 1.1 exists, 1.2 findByMemberId, 1.4 saveRenewal, 1.5 publish in order")
-    void renewFollowsCollaborationMessages() {
+    @DisplayName("TC-MBS-01: 1: renew() sends 1.1 exists, 1.2 findByMemberId, 1.4 saveRenewal, 1.5 publish in order")
+    void TC_MBS_01_renewFollowsCollaborationMessages() {
         when(memberLookup.exists(MEMBER_ID)).thenReturn(true);
         when(store.findByMemberId(MEMBER_ID)).thenReturn(Optional.of(m42));
 
@@ -53,8 +53,8 @@ class RenewalProcessorTest {
     }
 
     @Test
-    @DisplayName("Renewing an expired membership makes it ACTIVE again and is published once")
-    void renewExpiredMembership() {
+    @DisplayName("TC-MBS-02: Renewing an expired membership makes it ACTIVE again and is published once")
+    void TC_MBS_02_renewExpiredMembership() {
         Membership expired = expiredMembership();
         when(memberLookup.exists(MEMBER_ID)).thenReturn(true);
         when(store.findByMemberId(MEMBER_ID)).thenReturn(Optional.of(expired));
@@ -66,8 +66,8 @@ class RenewalProcessorTest {
     }
 
     @Test
-    @DisplayName("Unknown member: stops after 1.1, nothing saved or published")
-    void unknownMember() {
+    @DisplayName("TC-MBS-03: Unknown member: stops after 1.1, nothing saved or published")
+    void TC_MBS_03_unknownMember() {
         when(memberLookup.exists("MBR-9999")).thenReturn(false);
 
         assertThrows(MemberNotFoundException.class,
@@ -76,8 +76,8 @@ class RenewalProcessorTest {
     }
 
     @Test
-    @DisplayName("Member without a membership record is rejected before any save")
-    void missingMembership() {
+    @DisplayName("TC-MBS-04: Member without a membership record is rejected before any save")
+    void TC_MBS_04_missingMembership() {
         when(memberLookup.exists(MEMBER_ID)).thenReturn(true);
         when(store.findByMemberId(MEMBER_ID)).thenReturn(Optional.empty());
 
@@ -88,8 +88,8 @@ class RenewalProcessorTest {
     }
 
     @Test
-    @DisplayName("Invalid revised date: guard fails, no saveRenewal and no publish")
-    void invalidRevisedDate() {
+    @DisplayName("TC-MBS-05: Invalid revised date: guard fails, no saveRenewal and no publish")
+    void TC_MBS_05_invalidRevisedDate() {
         when(memberLookup.exists(MEMBER_ID)).thenReturn(true);
         when(store.findByMemberId(MEMBER_ID)).thenReturn(Optional.of(m42));
 
@@ -101,7 +101,8 @@ class RenewalProcessorTest {
     }
 
     @Test
-    void constructorRejectsMissingCollaborators() {
+    @DisplayName("TC-MBS-06: RenewalProcessor needs all its collaborators")
+    void TC_MBS_06_constructorRejectsMissingCollaborators() {
         assertThrows(NullPointerException.class, () -> new RenewalProcessor(null, store, renewalFeed, CLOCK));
     }
 }
